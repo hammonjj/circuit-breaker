@@ -4,6 +4,8 @@ using UnityEngine.InputSystem;
 using Platformer.Gameplay;
 using static Platformer.Core.Simulation;
 using Platformer.Model;
+using Spine.Unity;
+using Spine;
 
 namespace Platformer.Mechanics
 {
@@ -20,6 +22,31 @@ namespace Platformer.Mechanics
   /// </summary>
   public class PlayerController : KinematicObject
   {
+    // Spine Animation
+    public SkeletonAnimation skeletonAnim;
+    public AnimationReferenceAsset idleAnimation;
+    public AnimationReferenceAsset walkAnimation;
+
+    public string currentState;
+
+    public void SetAnimation(string animation, bool loop, float timeScale) 
+    {
+      //AnimationReferenceAsset animation
+      if(animation == "Idle") {
+        currentState = "Idle";
+        skeletonAnim.state.SetAnimation(0, idleAnimation, loop);
+      } else if(animation == "Walk") {
+        currentState = "Walk";
+        skeletonAnim.state.SetAnimation(0, walkAnimation, loop);
+      } else {
+        Debug.LogError("Invalid animation name: " + animation);
+        return;
+      }
+  
+      skeletonAnim.state.TimeScale = timeScale;
+    }
+    // End Spine Animation
+
     [Header("Debugging")]
     public bool wallDetectionLinesEnabled = false;
     public bool controlEnabled = true;
@@ -110,6 +137,12 @@ namespace Platformer.Mechanics
       playerLayer = LayerMask.NameToLayer("Player");
       dashingLayer = LayerMask.NameToLayer("DashingPlayer");
       terrainLayerMask = LayerMask.GetMask("Terrain");
+    }
+
+    override protected void Start()
+    {
+      base.Start();
+      SetAnimation("Idle", true, 1f);
     }
 
     protected override void OnEnable()
@@ -268,20 +301,24 @@ namespace Platformer.Mechanics
     private void OnMoveLeftPerformed(InputAction.CallbackContext context)
     {
       movingLeft = true;
+      SetAnimation("Walk", true, 1f);
     }
     private void OnMoveLeftCanceled(InputAction.CallbackContext context)
     {
       movingLeft = false;
+      SetAnimation("Idle", true, 1f);
     }
 
     // MoveRight event handlers
     private void OnMoveRightPerformed(InputAction.CallbackContext context)
     {
       movingRight = true;
+      SetAnimation("Walk", true, 1f);
     }
     private void OnMoveRightCanceled(InputAction.CallbackContext context)
     {
       movingRight = false;
+      SetAnimation("Idle", true, 1f);
     }
 
     // Jump event handlers
@@ -404,15 +441,13 @@ namespace Platformer.Mechanics
 
       if (move.x > 0.01f)
       {
-        spriteRenderer.flipX = false;
+        skeletonAnim.skeleton.ScaleX = -1f;
+
       }
       else if (move.x < -0.01f)
       {
-        spriteRenderer.flipX = true;
+        skeletonAnim.skeleton.ScaleX = 1f;
       }
-
-      animator.SetBool("grounded", IsGrounded);
-      animator.SetFloat("velocityX", Mathf.Abs(velocity.x) / maxSpeed);
 
       targetVelocity = move * maxSpeed;
     }
