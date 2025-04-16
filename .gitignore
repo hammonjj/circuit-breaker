@@ -47,10 +47,6 @@ ExportedObj/
 *.opendb
 *.VC.db
 
-# Unity3D generated meta files
-# (If your .meta files are inside Circuit Breaker, this pattern catches them.)
-Circuit Breaker/**/*.meta
-
 # Unity3D generated file on crash reports
 Circuit Breaker/sysinfo.txt
 
