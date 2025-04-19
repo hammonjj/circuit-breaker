@@ -17,12 +17,13 @@ MonoBehaviour:
     m_Bits: 128
   CollisionLayers:
     serializedVersion: 2
-    m_Bits: 833
+    m_Bits: 769
   CharacterSize:
     Height: 1.35
     Width: 0.9
     StepHeight: 0.6
     CrouchHeight: 0.8
+    RayInset: 0.1
   VerticalDeadZoneThreshold: 0.3
   HorizontalDeadZoneThreshold: 0.1
   PositionCorrectionMode: 0
