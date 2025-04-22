@@ -1,0 +1,217 @@
+{
+"skeleton": {
+	"hash": "t2kMibbmMNk",
+	"spine": "4.2.40",
+	"x": -501.12,
+	"y": -409.92,
+	"width": 1044.86,
+	"height": 832.04,
+	"images": "",
+	"audio": "./audio"
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "bone", "parent": "root", "length": 78.03, "rotation": 91.73, "x": -0.26, "y": -80.43 },
+	{ "name": "HeadTop", "parent": "bone", "length": 331.81, "rotation": -0.7, "x": 90.86, "y": 0.78 },
+	{ "name": "Antenna", "parent": "HeadTop", "length": 158.67, "rotation": -15.45, "x": 242.23, "y": -261.55 },
+	{ "name": "BackForegroundThigh-1", "parent": "root", "length": 126.8, "rotation": -50.79, "x": 113.82, "y": -43.18 },
+	{ "name": "BackForegroundThigh-2", "parent": "BackForegroundThigh-1", "length": 228.85, "rotation": 106.41, "x": 163.94, "y": 3.15 },
+	{ "name": "BackForegroundThigh-3", "parent": "BackForegroundThigh-2", "length": 181.09, "rotation": -108.73, "x": 225.08, "y": -23.93 },
+	{ "name": "BackForegroundKnee", "parent": "BackForegroundThigh-3", "length": 228.34, "rotation": -31.02, "x": 201.23, "y": -3.03 },
+	{ "name": "FrontForegroundThigh-2", "parent": "root", "length": 158.6, "rotation": -134.14, "x": -82.6, "y": -63.89 },
+	{ "name": "FrontForegroundKnee", "parent": "FrontForegroundThigh-2", "length": 200.25, "rotation": 25.93, "x": 176.47, "y": 7.01 },
+	{ "name": "FrontBackgroundThigh-1", "parent": "root", "length": 134, "rotation": 165.99, "x": -165.96, "y": -25.7 },
+	{ "name": "FrontBackgroundThigh-2", "parent": "FrontBackgroundThigh-1", "length": 159.04, "rotation": 73.02, "x": 158.42, "y": 9.66 },
+	{ "name": "FrontBackgroundKnee", "parent": "FrontBackgroundThigh-2", "length": 214.25, "rotation": 23.5, "x": 191.47, "y": 11.4 },
+	{ "name": "BackBackgroundThigh", "parent": "root", "length": 94.66, "rotation": -47.36, "x": 80.06, "y": -96.72 },
+	{ "name": "BackBackgroundKnee", "parent": "BackBackgroundThigh", "length": 199.11, "rotation": -39.55, "x": 134.96, "y": -4.47 }
+],
+"slots": [
+	{ "name": "BackBackgroundThigh", "bone": "BackBackgroundThigh", "attachment": "BackBackgroundThigh" },
+	{ "name": "BackBackgroundKnee", "bone": "BackBackgroundKnee", "attachment": "BackBackgroundKnee" },
+	{ "name": "BackBackgroundFoot", "bone": "BackBackgroundKnee", "attachment": "BackBackgroundFoot" },
+	{ "name": "FrontBackgroundThigh-2", "bone": "FrontBackgroundThigh-2", "attachment": "FrontBackgroundThigh-2" },
+	{ "name": "FrontBackgroundKnee", "bone": "FrontBackgroundKnee", "attachment": "FrontBackgroundKnee" },
+	{ "name": "FrontBackgroundFoot", "bone": "FrontBackgroundKnee", "attachment": "FrontBackgroundFoot" },
+	{ "name": "FrontBackgroundThigh-1", "bone": "FrontBackgroundThigh-1", "attachment": "FrontBackgroundThigh-1" },
+	{ "name": "Body", "bone": "HeadTop", "attachment": "Body" },
+	{ "name": "HeadTop", "bone": "HeadTop", "attachment": "HeadTop" },
+	{ "name": "BackForegroundThigh-1", "bone": "BackForegroundThigh-1", "attachment": "BackForegroundThigh-1" },
+	{ "name": "BackForegroundThigh-2", "bone": "BackForegroundThigh-2", "attachment": "BackForegroundThigh-2" },
+	{ "name": "BackForegroundThigh-3", "bone": "BackForegroundThigh-3", "attachment": "BackForegroundThigh-3" },
+	{ "name": "BackForegroundKnee", "bone": "BackForegroundKnee", "attachment": "BackForegroundKnee" },
+	{ "name": "BackForegroundFoot", "bone": "BackForegroundKnee", "attachment": "BackForegroundFoot" },
+	{ "name": "FrontForegroundFoot", "bone": "FrontForegroundKnee", "attachment": "FrontForegroundFoot" },
+	{ "name": "FrontForegroundKnee", "bone": "FrontForegroundKnee", "attachment": "FrontForegroundKnee" },
+	{ "name": "FrontForegroundThigh-2", "bone": "FrontForegroundThigh-2", "attachment": "FrontForegroundThigh-2" },
+	{ "name": "Antenna", "bone": "Antenna", "attachment": "Antenna" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"Antenna": {
+				"Antenna": { "x": 72.23, "y": 1.57, "rotation": -75.56, "width": 94, "height": 189 }
+			},
+			"BackBackgroundFoot": {
+				"BackBackgroundFoot": { "x": 114.09, "y": 2.65, "rotation": 88.66, "width": 77, "height": 187 }
+			},
+			"BackBackgroundKnee": {
+				"BackBackgroundKnee": { "x": 6.07, "y": 3.17, "rotation": 88.66, "width": 65, "height": 45 }
+			},
+			"BackBackgroundThigh": {
+				"BackBackgroundThigh": { "x": 60.67, "y": 5.95, "rotation": 44.5, "width": 121, "height": 94 }
+			},
+			"BackForegroundFoot": {
+				"BackForegroundFoot": { "x": 137.76, "y": -3.61, "rotation": 81.5, "width": 87, "height": 204 }
+			},
+			"BackForegroundKnee": {
+				"BackForegroundKnee": { "x": 14.13, "y": 4.76, "rotation": 81.5, "width": 71, "height": 67 }
+			},
+			"BackForegroundThigh-1": {
+				"BackForegroundThigh-1": { "x": 74.76, "y": -8.76, "rotation": 43.51, "width": 144, "height": 166 }
+			},
+			"BackForegroundThigh-2": {
+				"BackForegroundThigh-2": { "x": 106.32, "y": 1.63, "rotation": -44.18, "width": 228, "height": 233 }
+			},
+			"BackForegroundThigh-3": {
+				"BackForegroundThigh-3": { "x": 89.36, "y": 4.73, "rotation": 50.48, "width": 189, "height": 204 }
+			},
+			"Body": {
+				"Body": { "x": 0.97, "y": -9.27, "rotation": -91.01, "width": 531, "height": 211 }
+			},
+			"FrontBackgroundFoot": {
+				"FrontBackgroundFoot": { "x": 119.02, "y": 7.58, "rotation": 109, "width": 124, "height": 216 }
+			},
+			"FrontBackgroundKnee": {
+				"FrontBackgroundKnee": { "x": -0.88, "y": -3.62, "rotation": 109.03, "width": 67, "height": 62 }
+			},
+			"FrontBackgroundThigh-1": {
+				"FrontBackgroundThigh-1": { "x": 65.05, "y": -3.52, "rotation": -145.62, "width": 148, "height": 167 }
+			},
+			"FrontBackgroundThigh-2": {
+				"FrontBackgroundThigh-2": { "x": 75.34, "y": -1.2, "rotation": 137.67, "width": 196, "height": 193 }
+			},
+			"FrontForegroundFoot": {
+				"FrontForegroundFoot": { "x": 122.64, "y": 3.49, "rotation": 102.42, "width": 87, "height": 186 }
+			},
+			"FrontForegroundKnee": {
+				"FrontForegroundKnee": { "x": 14.97, "y": -7.42, "rotation": 102.42, "width": 68, "height": 55 }
+			},
+			"FrontForegroundThigh-2": {
+				"FrontForegroundThigh-2": { "x": 76.52, "y": -13.77, "rotation": 125.44, "width": 171, "height": 200 }
+			},
+			"HeadTop": {
+				"HeadTop": { "x": 163.9, "y": 13.87, "rotation": -91.01, "width": 659, "height": 358 }
+			}
+		}
+	}
+],
+"animations": {
+	"Walk": {
+		"bones": {
+			"BackForegroundThigh-1": {
+				"rotate": [
+					{},
+					{ "time": 0.0667, "value": -23.61 },
+					{ "time": 0.4 }
+				]
+			},
+			"BackForegroundThigh-2": {
+				"rotate": [
+					{},
+					{ "time": 0.0667, "value": 55.25 },
+					{ "time": 0.1333, "value": 32.67 },
+					{ "time": 0.2333, "value": 42.35 },
+					{ "time": 0.4 }
+				]
+			},
+			"BackForegroundThigh-3": {
+				"rotate": [
+					{},
+					{ "time": 0.0667, "value": -25.67 },
+					{ "time": 0.1333, "value": -16.16 },
+					{ "time": 0.2333, "value": -26.32 },
+					{ "time": 0.4 }
+				]
+			},
+			"BackForegroundKnee": {
+				"rotate": [
+					{},
+					{ "time": 0.0667, "value": -22.44 },
+					{ "time": 0.1333, "value": -3.26 },
+					{ "time": 0.2333, "value": 8.26 },
+					{ "time": 0.4 }
+				]
+			},
+			"FrontBackgroundThigh-1": {
+				"rotate": [
+					{},
+					{ "time": 0.1, "value": 21.08 },
+					{ "time": 0.2, "value": 24.05 },
+					{ "time": 0.3333 }
+				]
+			},
+			"FrontBackgroundThigh-2": {
+				"rotate": [
+					{},
+					{ "time": 0.1, "value": -59.26 },
+					{ "time": 0.2, "value": -52.98 },
+					{ "time": 0.3333 }
+				]
+			},
+			"FrontBackgroundKnee": {
+				"rotate": [
+					{},
+					{ "time": 0.1, "value": 27.08 },
+					{ "time": 0.2, "value": 40.05 },
+					{ "time": 0.3333 }
+				]
+			},
+			"BackBackgroundThigh": {
+				"rotate": [
+					{},
+					{ "time": 0.2667, "value": -8.62 },
+					{ "time": 0.4667 }
+				],
+				"translate": [
+					{},
+					{ "time": 0.1667, "x": -54.29, "y": 13.16 },
+					{ "time": 0.4667 }
+				]
+			},
+			"BackBackgroundKnee": {
+				"rotate": [
+					{},
+					{ "time": 0.1667, "value": -24.31 },
+					{ "time": 0.2667, "value": -0.57 },
+					{ "time": 0.4667 }
+				]
+			},
+			"FrontForegroundThigh-2": {
+				"rotate": [
+					{},
+					{ "time": 0.1333, "value": -19.57 },
+					{ "time": 0.2667, "value": -6.77 },
+					{ "time": 0.4 }
+				]
+			},
+			"FrontForegroundKnee": {
+				"rotate": [
+					{},
+					{ "time": 0.1333, "value": 10.54 },
+					{ "time": 0.2667, "value": 33.29 },
+					{ "time": 0.4 }
+				]
+			},
+			"Antenna": {
+				"rotate": [
+					{},
+					{ "time": 0.2667, "value": -6.25 },
+					{ "time": 0.5 }
+				]
+			}
+		}
+	}
+}
+}

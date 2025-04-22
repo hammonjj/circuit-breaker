@@ -19,10 +19,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 833
   CharacterSize:
-    Height: 1.35
-    Width: 0.9
-    StepHeight: 0.6
-    CrouchHeight: 0.8
+    Height: 2.18
+    Width: 2.65
+    StepHeight: 0.1
+    CrouchHeight: 0.3
+    RayInset: 0.0761
   VerticalDeadZoneThreshold: 0.3
   HorizontalDeadZoneThreshold: 0.1
   PositionCorrectionMode: 0
@@ -43,10 +44,10 @@ MonoBehaviour:
   DashDuration: 0.1
   DashCooldown: 0.5
   DashEndHorizontalMultiplier: 0.5
-  AllowCrouching: 1
+  AllowCrouching: 0
   CrouchSlowDownTime: 1
   CrouchSpeedModifier: 0.3
-  AllowWalls: 1
+  AllowWalls: 0
   ClimbableLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -60,7 +61,7 @@ MonoBehaviour:
   WallPopForce: 10
   WallCoyoteTime: 0.3
   WallDetectorRange: 0.15
-  AllowLadders: 1
+  AllowLadders: 0
   LadderCooldownTime: 0.15
   AutoAttachToLadders: 1
   SnapToLadders: 1

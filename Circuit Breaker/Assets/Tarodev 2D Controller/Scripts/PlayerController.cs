@@ -64,7 +64,7 @@ namespace TarodevController
         {
             Active = on;
 
-            _rb.isKinematic = !on;
+            _rb.bodyType = RigidbodyType2D.Kinematic;
             ToggledPlayer?.Invoke(on);
         }
 
@@ -329,18 +329,23 @@ namespace TarodevController
         private void SetColliderMode(ColliderMode mode)
         {
             _airborneCollider.enabled = mode == ColliderMode.Airborne;
-
+            Debug.Log("ColliderMode: " + mode);
             switch (mode)
             {
                 case ColliderMode.Standard:
                     _collider.size = _character.StandingColliderSize;
-                    _collider.offset = _character.StandingColliderCenter;
+                    var standingColliderCenter =  _character.StandingColliderCenter;
+                    standingColliderCenter.y += 2.0f;
+                    _collider.offset = standingColliderCenter;
                     break;
                 case ColliderMode.Crouching:
                     _collider.size = _character.CrouchColliderSize;
                     _collider.offset = _character.CrouchingColliderCenter;
                     break;
                 case ColliderMode.Airborne:
+                    var standingColliderCenterAirborne =  _character.StandingColliderCenter;
+                    standingColliderCenterAirborne.y += 2.0f;
+                    _collider.offset = standingColliderCenterAirborne;
                     break;
             }
         }
@@ -512,7 +517,6 @@ namespace TarodevController
         private float _timeJumpWasPressed;
         private Vector2 _forceToApplyThisFrame;
         private bool _endedJumpEarly;
-        private float _endedJumpForce;
         private int _airJumpsRemaining;
         private bool _wallJumpCoyoteUsable;
         private bool _coyoteUsable;
@@ -747,12 +751,14 @@ namespace TarodevController
 
             if (_dashing)
             {
+                Debug.Log("Dashing!");
                 SetVelocity(_dashVel);
                 return;
             }
 
             if (_isOnWall)
             {
+                Debug.Log("isOnWall!");
                 _constantForce.force = Vector2.zero;
 
                 float wallVelocity;
@@ -765,6 +771,7 @@ namespace TarodevController
 
             if (ClimbingLadder)
             {
+                Debug.Log("isClimbingLadder!");
                 _constantForce.force = Vector2.zero;
                 _rb.gravityScale = 0;
 
@@ -803,7 +810,7 @@ namespace TarodevController
 
             var step = _hasInputThisFrame ? Stats.Acceleration : Stats.Friction;
 
-            var xDir = (_hasInputThisFrame ? _frameDirection : Velocity.normalized);
+            var xDir = _hasInputThisFrame ? _frameDirection : Velocity.normalized;
 
             // Quicker direction change
             if (Vector3.Dot(_trimmedFrameVelocity, _frameDirection) < 0) step *= Stats.DirectionCorrectionMultiplier;
