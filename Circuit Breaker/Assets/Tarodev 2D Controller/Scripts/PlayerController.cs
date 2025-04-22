@@ -7,6 +7,8 @@ namespace TarodevController
     [RequireComponent(typeof(Rigidbody2D), typeof(BoxCollider2D), typeof(CapsuleCollider2D))]
     public class PlayerController : MonoBehaviour, IPlayerController, IPhysicsObject
     {
+        public Vector2 AirborneColliderOffset;
+        public Vector2 StandingColliderOffset;
         #region References
 
         private BoxCollider2D _collider;
@@ -159,7 +161,7 @@ namespace TarodevController
             _airborneCollider = GetComponent<CapsuleCollider2D>();
             _airborneCollider.hideFlags = HideFlags.NotEditable;
             _airborneCollider.size = new Vector2(_character.Width - SKIN_WIDTH * 2, _character.Height - SKIN_WIDTH * 2);
-            _airborneCollider.offset = new Vector2(0, _character.Height / 2);
+            _airborneCollider.offset = new Vector2(0, (_character.Height / 2) + 0.25f);
             _airborneCollider.sharedMaterial = _rb.sharedMaterial;
 
             SetColliderMode(ColliderMode.Airborne);
@@ -174,8 +176,6 @@ namespace TarodevController
         private void GatherInput()
         {
             _frameInput = _playerInput.Gather();
-
-
             if (_frameInput.JumpDown)
             {
                 _jumpToConsume = true;
@@ -329,13 +329,12 @@ namespace TarodevController
         private void SetColliderMode(ColliderMode mode)
         {
             _airborneCollider.enabled = mode == ColliderMode.Airborne;
-            Debug.Log("ColliderMode: " + mode);
             switch (mode)
             {
                 case ColliderMode.Standard:
                     _collider.size = _character.StandingColliderSize;
                     var standingColliderCenter =  _character.StandingColliderCenter;
-                    standingColliderCenter.y += 2.0f;
+                    standingColliderCenter += StandingColliderOffset;
                     _collider.offset = standingColliderCenter;
                     break;
                 case ColliderMode.Crouching:
@@ -344,7 +343,7 @@ namespace TarodevController
                     break;
                 case ColliderMode.Airborne:
                     var standingColliderCenterAirborne =  _character.StandingColliderCenter;
-                    standingColliderCenterAirborne.y += 2.0f;
+                    standingColliderCenterAirborne += AirborneColliderOffset;
                     _collider.offset = standingColliderCenterAirborne;
                     break;
             }
@@ -751,7 +750,6 @@ namespace TarodevController
 
             if (_dashing)
             {
-                Debug.Log("Dashing!");
                 SetVelocity(_dashVel);
                 return;
             }

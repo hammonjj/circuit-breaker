@@ -17,7 +17,7 @@ MonoBehaviour:
     m_Bits: 128
   CollisionLayers:
     serializedVersion: 2
-    m_Bits: 833
+    m_Bits: 769
   CharacterSize:
     Height: 2.18
     Width: 2.65

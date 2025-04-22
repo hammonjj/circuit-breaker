@@ -126,7 +126,6 @@ namespace TarodevController
 
             s.StandingColliderSize = new Vector2(s.Width - COLLIDER_EDGE_RADIUS * 2, s.Height - s.StepHeight - COLLIDER_EDGE_RADIUS * 2);
             s.StandingColliderCenter = new Vector2(0, s.Height - s.StandingColliderSize.y / 2 - COLLIDER_EDGE_RADIUS);
-            //s.StandingColliderCenter = new Vector2(0, s.StandingColliderSize.y / 2 + s.StepHeight);
             
             s.CrouchingHeight = CrouchHeight;
             s.CrouchColliderSize = new Vector2(s.Width - COLLIDER_EDGE_RADIUS * 2, s.CrouchingHeight - s.StepHeight);
