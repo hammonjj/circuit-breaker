@@ -16,6 +16,7 @@ namespace TarodevController
         private ConstantForce2D _constantForce;
         private Rigidbody2D _rb;
         private PlayerInput _playerInput;
+        private PlayerAnim _playerAnimator;
 
         #endregion
 
@@ -83,6 +84,8 @@ namespace TarodevController
             if (!TryGetComponent(out _playerInput)) _playerInput = gameObject.AddComponent<PlayerInput>();
             if (!TryGetComponent(out _constantForce)) _constantForce = gameObject.AddComponent<ConstantForce2D>();
 
+            _playerAnimator = GetComponentInChildren<PlayerAnim>();
+
             SetupCharacter();
 
             PhysicsSimulator.Instance.AddPlayer(this);
@@ -98,6 +101,8 @@ namespace TarodevController
             _time = time;
 
             GatherInput();
+            _playerAnimator?.TickUpdate(_frameInput.Move, _grounded);
+
         }
 
         public void TickFixedUpdate(float delta)
