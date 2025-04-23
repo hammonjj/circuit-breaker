@@ -14,6 +14,7 @@ public class PlayerAnim : MonoBehaviour
     [SerializeField] private string attackAnim = "Attack";
     [SerializeField] private string climbAnim = "Climb";
     [SerializeField] private string wallJumpAnim = "WallJump";
+    [SerializeField] private string CrouchAnim = "Crouch";
 
     [SerializeField] private float flipThreshold = 0.01f;
     [SerializeField] private bool defaultFacingRight = true;
@@ -37,11 +38,11 @@ public class PlayerAnim : MonoBehaviour
         if (!grounded)
         {
             ClearAnimation();
-            //SetAnimation(Jump);
+            //SetAnimation(jumpAnim);
         }
         else if (Mathf.Abs(input.x) > 0.1f)
         {
-            SetAnimation(Walk);
+            //SetAnimation(Walk);
         }
         else
         {
