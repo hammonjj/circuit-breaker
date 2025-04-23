@@ -36,7 +36,8 @@ public class PlayerAnim : MonoBehaviour
         // Handle animation state
         if (!grounded)
         {
-            SetAnimation(Jump);
+            ClearAnimation();
+            //SetAnimation(Jump);
         }
         else if (Mathf.Abs(input.x) > 0.1f)
         {
@@ -44,15 +45,24 @@ public class PlayerAnim : MonoBehaviour
         }
         else
         {
+            ClearAnimation();
             //SetAnimation(Idle);
         }
     }
 
     private void SetAnimation(string animation, bool loop = true)
     {
-        if (_currentAnimation == animation) return;
-
+        if (_currentAnimation == animation || string.IsNullOrWhiteSpace(animation)) return;
+        Debug.Log($"Setting animation to {animation}");
         _skeleton.AnimationState.SetAnimation(0, animation, loop);
         _currentAnimation = animation;
+    }
+
+    public void ClearAnimation()
+    {
+        if (_currentAnimation == null) { return; }
+
+        _skeleton.AnimationState.ClearTrack(0);
+        _currentAnimation = null;
     }
 }
