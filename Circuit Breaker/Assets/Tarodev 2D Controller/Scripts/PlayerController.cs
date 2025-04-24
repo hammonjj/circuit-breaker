@@ -101,7 +101,7 @@ namespace TarodevController
             _time = time;
 
             GatherInput();
-            _playerAnimator?.TickUpdate(_frameInput.Move, _grounded);
+            _playerAnimator?.TickUpdate(_frameInput.Move, _grounded, Crouching);
 
         }
 
@@ -154,6 +154,7 @@ namespace TarodevController
 
             _rb = GetComponent<Rigidbody2D>();
             _rb.hideFlags = HideFlags.NotEditable;
+            _rb.constraints = RigidbodyConstraints2D.FreezeRotation;
 
             // Primary collider
             _collider = GetComponent<BoxCollider2D>();
