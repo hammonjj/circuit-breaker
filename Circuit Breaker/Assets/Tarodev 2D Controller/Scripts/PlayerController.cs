@@ -155,6 +155,7 @@ namespace TarodevController
             _rb = GetComponent<Rigidbody2D>();
             _rb.hideFlags = HideFlags.NotEditable;
             _rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+            _rb.interpolation = RigidbodyInterpolation2D.Interpolate;
 
             // Primary collider
             _collider = GetComponent<BoxCollider2D>();
