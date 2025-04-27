@@ -11,6 +11,9 @@ using System;
 public class PlayerAnim : MonoBehaviour {
     [Tooltip("Drag your SkeletonAnimation component here if not on the same GameObject.")]
     public SkeletonAnimation skeletonAnimation;
+    public GameObject soundPulsePrefab;
+    public Vector2 pulseOffset2D = Vector2.zero;
+    int _dirSign = 1;
 
     private TrackEntry _walkEntry;
     private TrackEntry _crouchEntry;
@@ -32,6 +35,7 @@ public class PlayerAnim : MonoBehaviour {
         skeletonAnimation.state.ClearTracks();
         skeletonAnimation.Skeleton.SetToSetupPose();
         skeletonAnimation.Skeleton.UpdateWorldTransform(Skeleton.Physics.Update);
+        skeletonAnimation.state.Event += HandleSpineEvent;
 
         _controller = GetComponentInParent<TarodevController.PlayerController>();
         if (_controller != null) {
@@ -43,6 +47,8 @@ public class PlayerAnim : MonoBehaviour {
         if (_controller != null) {
             _controller.Jumped -= OnJumped;
         }
+
+        skeletonAnimation.state.Event -= HandleSpineEvent;
     }
 
     /// <summary>
@@ -117,8 +123,8 @@ public class PlayerAnim : MonoBehaviour {
     bool falling = !grounded && _controller.Velocity.y < 0;
     if (falling && !_wasFalling && _jumpEntry == null)
     {
-      _fallEntry = skeletonAnimation.state.SetAnimation(3, "Falling", true);
-      _fallEntry.TimeScale = 1f;
+      //_fallEntry = skeletonAnimation.state.SetAnimation(3, "Falling", true);
+      //_fallEntry.TimeScale = 1f;
     }
   }
 
@@ -133,14 +139,16 @@ public class PlayerAnim : MonoBehaviour {
         _fallEntry = null;
       }
 
-      _landEntry = skeletonAnimation.state.SetAnimation(4, "Landing", false);
-      _landEntry.TimeScale = 1f;
+      skeletonAnimation.state.SetEmptyAnimation(4, 0.1f);
+
+      //_landEntry = skeletonAnimation.state.SetAnimation(4, "Landing", false);
+      //_landEntry.TimeScale = 1f;
       // when Land completes, clear it so Walk/Crouch can resume
-      _landEntry.Complete += entry =>
-      {
-        skeletonAnimation.state.SetEmptyAnimation(4, 0.1f);
-        _landEntry = null;
-      };
+      //_landEntry.Complete += entry =>
+      //{
+      //  skeletonAnimation.state.SetEmptyAnimation(4, 0.1f);
+      //  _landEntry = null;
+      //};
     }
   }
 
@@ -153,6 +161,7 @@ public class PlayerAnim : MonoBehaviour {
     {
         // Use ScaleX to flip horizontally: negative = flip
         skeleton.ScaleX = move.x > 0 ? -1f : 1f;
+        _dirSign = move.x < 0 ? -1 : 1;
     } else if (wallSliding) {
         // Slide‐flip: if the wall is on your right (wallDir=+1), face right, else face left
         skeleton.ScaleX = wallDir < 0 ? -1f : 1f;
@@ -168,5 +177,27 @@ public class PlayerAnim : MonoBehaviour {
             skeletonAnimation.state.AddEmptyAnimation(2, 0.1f, 0);
             _jumpEntry = null;
         };
+    }
+
+    private void HandleSpineEvent(TrackEntry trackEntry, Spine.Event e)
+    {
+        // filter for only our footstep events
+        if (e.Data.Name.StartsWith("WalkLanding"))
+        {
+            // find the bone that drove this event, e.g. FrontForeground_Reference
+            // (you can encode the bone name in your event string if you want)
+            string boneName = e.Data.Name == "foot_L"
+                ? "FrontForeground_Reference"
+                : "FrontBackground_Reference";
+
+            var base2D = new Vector2(transform.position.x, transform.position.y);
+            var spawn2D = base2D + new Vector2(pulseOffset2D.x * _dirSign, pulseOffset2D.y);
+
+            // 2) lift back to 3D (z = 0 for a 2D game)
+            Vector3 spawn3D = new Vector3(spawn2D.x, spawn2D.y, 0f);
+
+            // 3) spawn your pulse prefab there
+            Instantiate(soundPulsePrefab, spawn3D, Quaternion.identity);
+        }
     }
 }

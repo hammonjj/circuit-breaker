@@ -1,7 +1,6 @@
 main-character.png
 size:1511,421
 filter:Linear,Linear
-pma:true
 BackBackgroundLeg-Foot
 bounds:466,4,105,51
 rotate:90

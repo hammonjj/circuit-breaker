@@ -1,6 +1,6 @@
 {
 "skeleton": {
-	"hash": "60WW6QGpWuE",
+	"hash": "elt+ZrhPlko",
 	"spine": "4.2.40",
 	"x": -467,
 	"y": -18.71,
@@ -168,8 +168,33 @@
 		}
 	}
 ],
+"events": {
+	"WalkLanding": {}
+},
 "animations": {
-	"Crouch": {},
+	"Crouch": {
+		"bones": {
+			"Body": {
+				"translate": [
+					{ "x": -15.81, "y": -49.06 },
+					{ "time": 0.1667, "x": -38.4, "y": -119.12 }
+				]
+			},
+			"FrontBackground_Reference": {
+				"translate": [
+					{ "time": 0.1667, "x": 23.39 }
+				]
+			}
+		},
+		"ik": {
+			"FrontBackground_Reference2": [
+				{ "time": 0.0667, "mix": 0.7989 },
+				{ "time": 0.1, "mix": 0.717 },
+				{ "time": 0.1333, "mix": 0.7011 },
+				{ "time": 0.1667, "mix": 0.8398 }
+			]
+		}
+	},
 	"Jump": {
 		"bones": {
 			"Body2": {
@@ -216,24 +241,87 @@
 		"bones": {
 			"Body": {
 				"translate": [
-					{ "x": -15.81, "y": -49.06 },
-					{ "time": 0.1667, "x": -38.4, "y": -119.12 }
+					{ "x": 6.28, "y": 19.48 },
+					{ "time": 0.1667, "x": -0.47, "y": -1.45 },
+					{ "time": 0.2, "x": -1.92, "y": -5.94 },
+					{ "time": 0.3, "x": 9.82, "y": 30.45 },
+					{ "time": 0.4333, "x": -7.21, "y": -22.38 },
+					{ "time": 0.5333, "x": 6.28, "y": 19.48 }
+				]
+			},
+			"FrontForeground_Reference": {
+				"rotate": [
+					{ "value": 52.67, "curve": "stepped" },
+					{ "time": 0.5333, "value": 52.67 }
+				],
+				"translate": [
+					{ "x": 143.16, "y": 93.73 },
+					{ "time": 0.2, "x": 123.54, "y": 68.78 },
+					{ "time": 0.3, "x": -205.63, "y": 45.62 },
+					{ "time": 0.3667, "x": -124.58, "y": -18.89 },
+					{ "time": 0.4333, "x": -161.91, "y": -1.17 },
+					{ "time": 0.5333, "x": 143.16, "y": 93.73 }
+				]
+			},
+			"BackBackground_Reference": {
+				"translate": [
+					{ "x": 408.73, "y": 56.04 },
+					{ "time": 0.3, "x": 54.74, "y": 56.04 },
+					{ "time": 0.3667, "x": 134.63, "y": -1.94 },
+					{ "time": 0.4333, "x": 78.39, "y": 1.37 },
+					{ "time": 0.5333, "x": 408.73, "y": 56.04 }
+				]
+			},
+			"BackForeground_Reference": {
+				"translate": [
+					{ "x": -251.43, "y": 44.66 },
+					{ "time": 0.1, "x": -254.74, "y": 4.96 },
+					{ "time": 0.2, "x": -254.74, "y": 3.31 },
+					{ "time": 0.3, "x": 142.26, "y": 3.31 },
+					{ "time": 0.3667, "x": 171.76, "y": 26.84 },
+					{ "time": 0.4333, "x": -82.97, "y": 41.73 },
+					{ "time": 0.5333, "x": -251.43, "y": 44.66 }
 				]
 			},
 			"FrontBackground_Reference": {
 				"translate": [
-					{ "time": 0.1667, "x": 23.39 }
+					{ "x": -90.98, "y": 46.32 },
+					{ "time": 0.1, "x": -44.66, "y": -28.12 },
+					{ "time": 0.2, "x": -44.66, "y": 4.96 },
+					{ "time": 0.3, "x": 358.95, "y": 69.47 },
+					{ "time": 0.3667, "x": 393.68, "y": 130.68 },
+					{ "time": 0.4333, "x": 279.46, "y": 32.7 },
+					{ "time": 0.5333, "x": -90.98, "y": 46.32 }
+				]
+			},
+			"FrontForeground_Reference2": {
+				"translate": [
+					{ "time": 0.3, "x": 76.77, "y": -209.8 },
+					{ "time": 0.3667, "x": 42.45, "y": -239.24 },
+					{ "time": 0.4333, "x": 62.42, "y": -160.49 }
+				]
+			},
+			"FrontBackground_Reference2": {
+				"translate": [
+					{ "time": 0.3, "x": -421.8, "y": -29.77 },
+					{ "time": 0.4333, "x": -320.9, "y": 39.7 }
+				]
+			},
+			"BackForeground_Reference2": {
+				"translate": [
+					{ "time": 0.4333, "x": -184.2, "y": -68.06 }
 				]
 			}
 		},
 		"ik": {
-			"FrontBackground_Reference2": [
-				{ "time": 0.0667, "mix": 0.7989 },
-				{ "time": 0.1, "mix": 0.717 },
-				{ "time": 0.1333, "mix": 0.7011 },
-				{ "time": 0.1667, "mix": 0.8398 }
+			"FrontForeground_Reference2": [
+				{ "curve": "stepped" },
+				{ "time": 0.5333 }
 			]
-		}
+		},
+		"events": [
+			{ "time": 0.1, "name": "WalkLanding" }
+		]
 	}
 }
 }
