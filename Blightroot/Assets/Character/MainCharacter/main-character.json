@@ -1,0 +1,239 @@
+{
+"skeleton": {
+	"hash": "60WW6QGpWuE",
+	"spine": "4.2.40",
+	"x": -467,
+	"y": -18.71,
+	"width": 927,
+	"height": 766.16,
+	"images": "../Art/robo-thief/",
+	"audio": "./audio"
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "Body", "parent": "root", "length": 215.31, "rotation": 162.13, "x": 233.96, "y": 392.16 },
+	{ "name": "Body2", "parent": "Body", "length": 230.57, "rotation": 28.65, "x": 214.9, "y": 1.28 },
+	{ "name": "Head", "parent": "Body2", "length": 242.99, "rotation": 15.21, "x": 232.15, "y": 1.07 },
+	{ "name": "FrontForegroundLeg-Upper", "parent": "Body2", "length": 107.93, "rotation": 120.67, "x": 138.11, "y": 134.27 },
+	{ "name": "FrontForegroundLeg-Lower", "parent": "FrontForegroundLeg-Upper", "length": 182.27, "rotation": -62.71, "x": 107.16, "y": -2.91 },
+	{ "name": "FrontForegroundLeg-Foot", "parent": "FrontForegroundLeg-Lower", "length": 63.38, "rotation": -30.66, "x": 185.76, "y": -1.54 },
+	{ "name": "FrontBackgroundLeg-Upper", "parent": "Body2", "length": 94.84, "rotation": 64.39, "x": 244.99, "y": 112.2 },
+	{ "name": "FrontBackgroundLeg-Lower", "parent": "FrontBackgroundLeg-Upper", "length": 208.95, "rotation": -25.3, "x": 96.48, "y": -0.96 },
+	{ "name": "FrontBackgroundLeg-Foot", "parent": "FrontBackgroundLeg-Lower", "length": 67.32, "rotation": -16.08, "x": 209.03, "y": 1.91 },
+	{ "name": "BackBackgroundLeg-Hip", "parent": "Body", "length": 103.67, "rotation": 87.31, "x": 105.33, "y": 96.79 },
+	{ "name": "BackBackgroundLeg-Upper", "parent": "BackBackgroundLeg-Hip", "length": 99.47, "rotation": 53.38, "x": 99.73, "y": 2.84 },
+	{ "name": "BackbacgroundLeg-Lower", "parent": "BackBackgroundLeg-Upper", "length": 133.19, "rotation": -64.59, "x": 97.94, "y": 2.59 },
+	{ "name": "BackBackgroundLeg-Foot", "parent": "BackbacgroundLeg-Lower", "length": 66.94, "rotation": -22.42, "x": 133.63, "y": 1.86 },
+	{ "name": "BackForegroundLeg-Hip", "parent": "Body", "length": 123.71, "rotation": 124.33, "x": 39.58, "y": 35.42 },
+	{ "name": "BackForegroundLeg-Upper", "parent": "BackForegroundLeg-Hip", "length": 125.59, "rotation": 42.06, "x": 119.45, "y": -0.15 },
+	{ "name": "BackForegroundLeg-Lower", "parent": "BackForegroundLeg-Upper", "length": 144.11, "rotation": -42.22, "x": 126.76, "y": 0.67 },
+	{ "name": "BackForegroundLeg-Foot", "parent": "BackForegroundLeg-Lower", "length": 61.49, "rotation": -68.8, "x": 148.33, "y": -4.31 },
+	{ "name": "Tail", "parent": "Body", "length": 339.41, "rotation": 158.99, "x": 63.37, "y": -16.4 },
+	{ "name": "FrontBackground_Reference", "parent": "root", "x": -369.02, "y": 1.18, "color": "ff4000ff", "icon": "ik" },
+	{ "name": "FrontForeground_Reference", "parent": "root", "x": -120.62, "y": -0.17, "color": "ff4000ff", "icon": "ik" },
+	{ "name": "BackBackground_Reference", "parent": "root", "x": 11.5, "y": 1.18, "color": "ff4000ff", "icon": "ik" },
+	{ "name": "BackForeground_Reference", "parent": "root", "x": 329.4, "y": 6.62, "color": "ff4000ff", "icon": "ik" },
+	{ "name": "BackBackground_Reference2", "parent": "BackBackground_Reference", "x": 117.71, "y": 155.84, "color": "ff4000ff", "icon": "ik" },
+	{ "name": "FrontForeground_Reference2", "parent": "FrontForeground_Reference", "x": 111.52, "y": 217.45, "color": "ff4000ff", "icon": "ik" },
+	{ "name": "FrontBackground_Reference2", "parent": "FrontBackground_Reference", "x": 196.88, "y": 206.15, "color": "ff4000ff", "icon": "ik" },
+	{ "name": "BackForeground_Reference2", "parent": "BackForeground_Reference", "x": 2.59, "y": 189.72, "color": "ff4000ff", "icon": "ik" }
+],
+"slots": [
+	{ "name": "BackBackgroundLeg-Foot", "bone": "BackBackgroundLeg-Foot", "attachment": "BackBackgroundLeg-Foot" },
+	{ "name": "BackbacgroundLeg-Lower", "bone": "BackbacgroundLeg-Lower", "attachment": "BackbacgroundLeg-Lower" },
+	{ "name": "BackBackgroundLeg-Upper", "bone": "BackBackgroundLeg-Upper", "attachment": "BackBackgroundLeg-Upper" },
+	{ "name": "BackBackgroundLeg-Hip", "bone": "BackBackgroundLeg-Hip", "attachment": "BackBackgroundLeg-Hip" },
+	{ "name": "FrontBackgroundLeg-Foot", "bone": "FrontBackgroundLeg-Foot", "attachment": "FrontBackgroundLeg-Foot" },
+	{ "name": "FrontBackgroundLeg-Lower", "bone": "FrontBackgroundLeg-Lower", "attachment": "FrontBackgroundLeg-Lower" },
+	{ "name": "FrontBackgroundLeg-Upper", "bone": "FrontBackgroundLeg-Upper", "attachment": "FrontBackgroundLeg-Upper" },
+	{ "name": "Body", "bone": "Body2", "attachment": "Body" },
+	{ "name": "Tail", "bone": "Tail", "attachment": "Tail" },
+	{ "name": "BackForegroundLeg-Foot", "bone": "BackForegroundLeg-Foot", "attachment": "BackForegroundLeg-Foot" },
+	{ "name": "BackForegroundLeg-Lower", "bone": "BackForegroundLeg-Lower", "attachment": "BackForegroundLeg-Lower" },
+	{ "name": "BackForegroundLeg-Upper", "bone": "BackForegroundLeg-Upper", "attachment": "BackForegroundLeg-Upper" },
+	{ "name": "BackForegroundLeg-Hip", "bone": "BackForegroundLeg-Hip", "attachment": "BackForegroundLeg-Hip" },
+	{ "name": "FrontForegroundLeg-Foot", "bone": "FrontForegroundLeg-Foot", "attachment": "FrontForegroundLeg-Foot" },
+	{ "name": "FrontForegroundLeg-Lower", "bone": "FrontForegroundLeg-Lower", "attachment": "FrontForegroundLeg-Lower" },
+	{ "name": "FrontForegroundLeg-Upper", "bone": "FrontForegroundLeg-Upper", "attachment": "FrontForegroundLeg-Upper" },
+	{ "name": "Head", "bone": "Head", "attachment": "Head" }
+],
+"ik": [
+	{
+		"name": "BackBackground_Reference",
+		"order": 3,
+		"bones": [ "BackbacgroundLeg-Lower", "BackBackgroundLeg-Foot" ],
+		"target": "BackBackground_Reference",
+		"bendPositive": false
+	},
+	{
+		"name": "BackBackground_Reference2",
+		"order": 2,
+		"bones": [ "BackBackgroundLeg-Hip", "BackBackgroundLeg-Upper" ],
+		"target": "BackBackground_Reference2"
+	},
+	{
+		"name": "BackForeground_Reference",
+		"order": 1,
+		"bones": [ "BackForegroundLeg-Lower", "BackForegroundLeg-Foot" ],
+		"target": "BackForeground_Reference",
+		"bendPositive": false
+	},
+	{
+		"name": "BackForeground_Reference2",
+		"bones": [ "BackForegroundLeg-Hip", "BackForegroundLeg-Upper" ],
+		"target": "BackForeground_Reference2"
+	},
+	{
+		"name": "FrontBackground_Reference",
+		"order": 7,
+		"bones": [ "FrontBackgroundLeg-Lower", "FrontBackgroundLeg-Foot" ],
+		"target": "FrontBackground_Reference",
+		"bendPositive": false
+	},
+	{
+		"name": "FrontBackground_Reference2",
+		"order": 6,
+		"bones": [ "FrontBackgroundLeg-Upper" ],
+		"target": "FrontBackground_Reference2"
+	},
+	{
+		"name": "FrontForeground_Reference",
+		"order": 5,
+		"bones": [ "FrontForegroundLeg-Lower", "FrontForegroundLeg-Foot" ],
+		"target": "FrontForeground_Reference",
+		"bendPositive": false
+	},
+	{
+		"name": "FrontForeground_Reference2",
+		"order": 4,
+		"bones": [ "FrontForegroundLeg-Upper" ],
+		"target": "FrontForeground_Reference2"
+	}
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"BackbacgroundLeg-Lower": {
+				"BackbacgroundLeg-Lower": { "x": 65.37, "y": 2.07, "rotation": 121.76, "width": 119, "height": 147 }
+			},
+			"BackBackgroundLeg-Foot": {
+				"BackBackgroundLeg-Foot": { "x": 39.21, "y": -4.61, "rotation": 152.4, "width": 105, "height": 51 }
+			},
+			"BackBackgroundLeg-Hip": {
+				"BackBackgroundLeg-Hip": { "x": 52.93, "y": -1.75, "rotation": 110.56, "width": 124, "height": 123 }
+			},
+			"BackBackgroundLeg-Upper": {
+				"BackBackgroundLeg-Upper": { "x": 52.01, "y": -0.67, "rotation": 57.17, "width": 109, "height": 106 }
+			},
+			"BackForegroundLeg-Foot": {
+				"BackForegroundLeg-Foot": { "x": 38.85, "y": -2.44, "rotation": 142.13, "width": 112, "height": 68 }
+			},
+			"BackForegroundLeg-Hip": {
+				"BackForegroundLeg-Hip": { "x": 62.92, "y": -4.43, "rotation": 73.54, "width": 126, "height": 163 }
+			},
+			"BackForegroundLeg-Lower": {
+				"BackForegroundLeg-Lower": { "x": 73.75, "y": -2.46, "rotation": 70.89, "width": 95, "height": 168 }
+			},
+			"BackForegroundLeg-Upper": {
+				"BackForegroundLeg-Upper": { "x": 55.95, "y": -1.58, "rotation": 29.59, "width": 178, "height": 105 }
+			},
+			"Body": {
+				"Body": { "x": 30.84, "y": 49.53, "rotation": 169.22, "width": 464, "height": 280 }
+			},
+			"FrontBackgroundLeg-Foot": {
+				"FrontBackgroundLeg-Foot": { "x": 42.96, "y": -3.34, "rotation": 147.26, "width": 113, "height": 63 }
+			},
+			"FrontBackgroundLeg-Lower": {
+				"FrontBackgroundLeg-Lower": { "x": 96.86, "y": 4.02, "rotation": 132.65, "width": 190, "height": 184 }
+			},
+			"FrontBackgroundLeg-Upper": {
+				"FrontBackgroundLeg-Upper": { "x": 52.81, "y": 9.56, "rotation": 104.83, "width": 90, "height": 123 }
+			},
+			"FrontForegroundLeg-Foot": {
+				"FrontForegroundLeg-Foot": { "x": 43.11, "y": -4.14, "rotation": 141.91, "width": 110, "height": 65 }
+			},
+			"FrontForegroundLeg-Lower": {
+				"FrontForegroundLeg-Lower": { "x": 84.73, "y": 5.34, "rotation": 111.25, "width": 119, "height": 205 }
+			},
+			"FrontForegroundLeg-Upper": {
+				"FrontForegroundLeg-Upper": { "x": 56.58, "y": 3.42, "rotation": 48.54, "width": 125, "height": 115 }
+			},
+			"Head": {
+				"Head": { "x": 75.65, "y": -105.38, "rotation": 154, "width": 308, "height": 547 }
+			},
+			"Tail": {
+				"Tail": { "x": 162.04, "y": 5.04, "rotation": 38.87, "width": 304, "height": 266 }
+			}
+		}
+	}
+],
+"animations": {
+	"Crouch": {},
+	"Jump": {
+		"bones": {
+			"Body2": {
+				"rotate": [
+					{ "value": -30.43 }
+				]
+			},
+			"Body": {
+				"rotate": [
+					{ "time": 0.1667, "value": -18.7 }
+				],
+				"translate": [
+					{ "time": 0.1667, "x": -53.21, "y": 101.28 }
+				]
+			},
+			"Head": {
+				"rotate": [
+					{ "time": 0.1667, "value": -0.03 }
+				]
+			},
+			"FrontBackground_Reference": {
+				"translate": [
+					{ "time": 0.1667, "x": 164.13 }
+				]
+			},
+			"FrontForeground_Reference": {
+				"translate": [
+					{ "time": 0.1667, "x": 110.27 }
+				]
+			},
+			"BackBackground_Reference": {
+				"translate": [
+					{ "time": 0.1667, "x": 117.97 }
+				]
+			},
+			"BackForeground_Reference": {
+				"translate": [
+					{ "time": 0.1667, "x": 23.08 }
+				]
+			}
+		}
+	},
+	"Walk": {
+		"bones": {
+			"Body": {
+				"translate": [
+					{ "x": -15.81, "y": -49.06 },
+					{ "time": 0.1667, "x": -38.4, "y": -119.12 }
+				]
+			},
+			"FrontBackground_Reference": {
+				"translate": [
+					{ "time": 0.1667, "x": 23.39 }
+				]
+			}
+		},
+		"ik": {
+			"FrontBackground_Reference2": [
+				{ "time": 0.0667, "mix": 0.7989 },
+				{ "time": 0.1, "mix": 0.717 },
+				{ "time": 0.1333, "mix": 0.7011 },
+				{ "time": 0.1667, "mix": 0.8398 }
+			]
+		}
+	}
+}
+}

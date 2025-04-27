@@ -1,0 +1,585 @@
+fileFormatVersion: 2
+guid: 82bca5d043b3a46e98d16a8257c7a42b
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7927085014112774632
+    second: robo-thief_0
+  - first:
+      213: 3659243672649823381
+    second: robo-thief_1
+  - first:
+      213: -6741980398865121652
+    second: robo-thief_2
+  - first:
+      213: -5964877568541563256
+    second: robo-thief_3
+  - first:
+      213: -7562764162417671313
+    second: robo-thief_4
+  - first:
+      213: -8685305861532393471
+    second: robo-thief_5
+  - first:
+      213: -5342357306907453498
+    second: robo-thief_6
+  - first:
+      213: 196891893858855019
+    second: robo-thief_7
+  - first:
+      213: -5232908144245166382
+    second: robo-thief_8
+  - first:
+      213: -7362759846802776453
+    second: robo-thief_9
+  - first:
+      213: 7829342791186791155
+    second: robo-thief_10
+  - first:
+      213: -2515182316476237274
+    second: robo-thief_11
+  - first:
+      213: -3962523125172857018
+    second: robo-thief_12
+  - first:
+      213: -5198492504376555772
+    second: robo-thief_13
+  - first:
+      213: 8895446353633896012
+    second: robo-thief_14
+  - first:
+      213: 8973339623455634815
+    second: robo-thief_15
+  - first:
+      213: 977633870585428160
+    second: robo-thief_16
+  - first:
+      213: -3707181667026991072
+    second: robo-thief_17
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 0
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 0
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 0
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: robo-thief_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 362
+        width: 200
+        height: 171
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e9a38222d9a20e60800000000000000
+      internalID: 7927085014112774632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: robo-thief_1
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 362
+        width: 216
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59473e69bbe38c230800000000000000
+      internalID: 3659243672649823381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: robo-thief_2
+      rect:
+        serializedVersion: 2
+        x: 422
+        y: 451
+        width: 187
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c8e7ffa3c8caf62a0800000000000000
+      internalID: -6741980398865121652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: robo-thief_3
+      rect:
+        serializedVersion: 2
+        x: 628
+        y: 445
+        width: 186
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8866266647f783da0800000000000000
+      internalID: -5964877568541563256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: robo-thief_4
+      rect:
+        serializedVersion: 2
+        x: 816
+        y: 445
+        width: 67
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f634a03401aab0790800000000000000
+      internalID: -7562764162417671313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: robo-thief_5
+      rect:
+        serializedVersion: 2
+        x: 898
+        y: 413
+        width: 189
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1006ebde558977780800000000000000
+      internalID: -8685305861532393471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: robo-thief_6
+      rect:
+        serializedVersion: 2
+        x: 1093
+        y: 339
+        width: 204
+        height: 189
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c7919a95522cd5b0800000000000000
+      internalID: -5342357306907453498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: robo-thief_7
+      rect:
+        serializedVersion: 2
+        x: 1299
+        y: 478
+        width: 65
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b686c9062208bb200800000000000000
+      internalID: 196891893858855019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: robo-thief_8
+      rect:
+        serializedVersion: 2
+        x: 422
+        y: 362
+        width: 204
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2dea40894c9f067b0800000000000000
+      internalID: -5232908144245166382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: robo-thief_9
+      rect:
+        serializedVersion: 2
+        x: 663
+        y: 215
+        width: 233
+        height: 228
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b7e9fcccde832d990800000000000000
+      internalID: -7362759846802776453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: robo-thief_10
+      rect:
+        serializedVersion: 2
+        x: 898
+        y: 215
+        width: 193
+        height: 196
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3fa347579c967ac60800000000000000
+      internalID: 7829342791186791155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: robo-thief_11
+      rect:
+        serializedVersion: 2
+        x: 1299
+        y: 408
+        width: 55
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62af6195207481dd0800000000000000
+      internalID: -2515182316476237274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: robo-thief_12
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 2
+        width: 659
+        height: 358
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6471dc5463a4209c0800000000000000
+      internalID: -3962523125172857018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: robo-thief_13
+      rect:
+        serializedVersion: 2
+        x: 1299
+        y: 339
+        width: 62
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 407ca1d2c9e3bd7b0800000000000000
+      internalID: -5198492504376555772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: robo-thief_14
+      rect:
+        serializedVersion: 2
+        x: 1093
+        y: 215
+        width: 94
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4664ea1459f27b70800000000000000
+      internalID: 8895446353633896012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: robo-thief_15
+      rect:
+        serializedVersion: 2
+        x: 1196
+        y: 171
+        width: 144
+        height: 166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f75b20148d4b78c70800000000000000
+      internalID: 8973339623455634815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: robo-thief_16
+      rect:
+        serializedVersion: 2
+        x: 663
+        y: 2
+        width: 531
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c872a853d0419d00800000000000000
+      internalID: 977633870585428160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: robo-thief_17
+      rect:
+        serializedVersion: 2
+        x: 1196
+        y: 2
+        width: 148
+        height: 167
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02804035ae17d8cc0800000000000000
+      internalID: -3707181667026991072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      robo-thief_0: 7927085014112774632
+      robo-thief_1: 3659243672649823381
+      robo-thief_10: 7829342791186791155
+      robo-thief_11: -2515182316476237274
+      robo-thief_12: -3962523125172857018
+      robo-thief_13: -5198492504376555772
+      robo-thief_14: 8895446353633896012
+      robo-thief_15: 8973339623455634815
+      robo-thief_16: 977633870585428160
+      robo-thief_17: -3707181667026991072
+      robo-thief_2: -6741980398865121652
+      robo-thief_3: -5964877568541563256
+      robo-thief_4: -7562764162417671313
+      robo-thief_5: -8685305861532393471
+      robo-thief_6: -5342357306907453498
+      robo-thief_7: 196891893858855019
+      robo-thief_8: -5232908144245166382
+      robo-thief_9: -7362759846802776453
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

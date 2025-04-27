@@ -17,12 +17,13 @@ MonoBehaviour:
     m_Bits: 128
   CollisionLayers:
     serializedVersion: 2
-    m_Bits: 833
+    m_Bits: 769
   CharacterSize:
-    Height: 1.35
-    Width: 0.9
-    StepHeight: 0.6
-    CrouchHeight: 0.8
+    Height: 1.98
+    Width: 2.31
+    StepHeight: 0.83
+    CrouchHeight: 1.9599999
+    RayInset: 0.0761
   VerticalDeadZoneThreshold: 0.3
   HorizontalDeadZoneThreshold: 0.1
   PositionCorrectionMode: 0
@@ -57,10 +58,11 @@ MonoBehaviour:
   WallPushPower: {x: 20, y: 18}
   WallClimbSpeed: 5
   WallFallAcceleration: 5
+  WallSlideSpeed: 2
   WallPopForce: 10
   WallCoyoteTime: 0.3
   WallDetectorRange: 0.15
-  AllowLadders: 1
+  AllowLadders: 0
   LadderCooldownTime: 0.15
   AutoAttachToLadders: 1
   SnapToLadders: 1

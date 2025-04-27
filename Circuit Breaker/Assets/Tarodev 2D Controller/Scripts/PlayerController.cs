@@ -101,7 +101,7 @@ namespace TarodevController
             _time = time;
 
             GatherInput();
-            _playerAnimator?.TickUpdate(_frameInput.Move, _grounded, Crouching);
+            _playerAnimator?.TickUpdate(_frameInput.Move, _grounded, Crouching, _wallSliding, WallDirection);
 
         }
 
@@ -257,6 +257,7 @@ namespace TarodevController
         private const int RAY_SIDE_COUNT = 5;
         private RaycastHit2D _groundHit;
         private bool _grounded;
+        private bool _wallSliding;
         private float _currentStepDownLength;
         private float GrounderLength => _character.StepHeight + SKIN_WIDTH;
 
@@ -424,14 +425,19 @@ namespace TarodevController
                 if (_wallDirThisFrame == 0 || _grounded) return false;
 
                 if (HorizontalInputPressed && !IsPushingAgainstWall) return false; // If pushing away
-                return !Stats.RequireInputPush || (IsPushingAgainstWall);
+                return !Stats.RequireInputPush || IsPushingAgainstWall;
             }
         }
 
         private bool DetectWallCast(float dir)
         {
-            return Physics2D.BoxCast(_framePosition + (Vector2)_wallDetectionBounds.center, new Vector2(_character.StandingColliderSize.x - SKIN_WIDTH, _wallDetectionBounds.size.y), 0, new Vector2(dir, 0), Stats.WallDetectorRange,
-                Stats.ClimbableLayer);
+            return Physics2D.BoxCast(
+                _framePosition + (Vector2)_wallDetectionBounds.center, 
+                new Vector2(_character.StandingColliderSize.x - SKIN_WIDTH, _wallDetectionBounds.size.y), 
+                0, 
+                new Vector2(dir, 0), 
+                Stats.WallDetectorRange,
+                Stats.CollisionLayers);
         }
 
         private void ToggleOnWall(bool on)
@@ -761,17 +767,19 @@ namespace TarodevController
                 return;
             }
 
-            if (_isOnWall)
-            {
-                Debug.Log("isOnWall!");
+            if (_isOnWall && !_grounded) {
                 _constantForce.force = Vector2.zero;
+                if (_frameInput.Move.y != 0) {
+                    SetVelocity(new Vector2(Velocity.x, _frameInput.Move.y * Stats.WallClimbSpeed));
+                }
+                else if (IsPushingAgainstWall){
+                    _wallSliding = true;
+                    SetVelocity(new Vector2(Velocity.x, -Stats.WallSlideSpeed));
+                }
 
-                float wallVelocity;
-                if (_frameInput.Move.y != 0) wallVelocity = _frameInput.Move.y * Stats.WallClimbSpeed;
-                else wallVelocity = Mathf.MoveTowards(Mathf.Min(Velocity.y, 0), -Stats.WallClimbSpeed, Stats.WallFallAcceleration * _delta);
-
-                SetVelocity(new Vector2(_rb.linearVelocity.x, wallVelocity));
                 return;
+            } else {
+                _wallSliding = false;
             }
 
             if (ClimbingLadder)
@@ -952,6 +960,7 @@ namespace TarodevController
 
         #endregion
     }
+    
 
     public enum JumpType
     {

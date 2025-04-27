@@ -7,6 +7,8 @@ namespace TarodevController
     [RequireComponent(typeof(Rigidbody2D), typeof(BoxCollider2D), typeof(CapsuleCollider2D))]
     public class PlayerController : MonoBehaviour, IPlayerController, IPhysicsObject
     {
+        public Vector2 AirborneColliderOffset;
+        public Vector2 StandingColliderOffset;
         #region References
 
         private BoxCollider2D _collider;
@@ -14,6 +16,7 @@ namespace TarodevController
         private ConstantForce2D _constantForce;
         private Rigidbody2D _rb;
         private PlayerInput _playerInput;
+        private PlayerAnim _playerAnimator;
 
         #endregion
 
@@ -64,7 +67,7 @@ namespace TarodevController
         {
             Active = on;
 
-            _rb.isKinematic = !on;
+            _rb.bodyType = RigidbodyType2D.Kinematic;
             ToggledPlayer?.Invoke(on);
         }
 
@@ -81,6 +84,8 @@ namespace TarodevController
             if (!TryGetComponent(out _playerInput)) _playerInput = gameObject.AddComponent<PlayerInput>();
             if (!TryGetComponent(out _constantForce)) _constantForce = gameObject.AddComponent<ConstantForce2D>();
 
+            _playerAnimator = GetComponentInChildren<PlayerAnim>();
+
             SetupCharacter();
 
             PhysicsSimulator.Instance.AddPlayer(this);
@@ -96,6 +101,8 @@ namespace TarodevController
             _time = time;
 
             GatherInput();
+            _playerAnimator?.TickUpdate(_frameInput.Move, _grounded, Crouching, _wallSliding, WallDirection);
+
         }
 
         public void TickFixedUpdate(float delta)
@@ -147,6 +154,8 @@ namespace TarodevController
 
             _rb = GetComponent<Rigidbody2D>();
             _rb.hideFlags = HideFlags.NotEditable;
+            _rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+            _rb.interpolation = RigidbodyInterpolation2D.Interpolate;
 
             // Primary collider
             _collider = GetComponent<BoxCollider2D>();
@@ -159,7 +168,7 @@ namespace TarodevController
             _airborneCollider = GetComponent<CapsuleCollider2D>();
             _airborneCollider.hideFlags = HideFlags.NotEditable;
             _airborneCollider.size = new Vector2(_character.Width - SKIN_WIDTH * 2, _character.Height - SKIN_WIDTH * 2);
-            _airborneCollider.offset = new Vector2(0, _character.Height / 2);
+            _airborneCollider.offset = new Vector2(0, (_character.Height / 2) + 0.25f);
             _airborneCollider.sharedMaterial = _rb.sharedMaterial;
 
             SetColliderMode(ColliderMode.Airborne);
@@ -174,8 +183,6 @@ namespace TarodevController
         private void GatherInput()
         {
             _frameInput = _playerInput.Gather();
-
-
             if (_frameInput.JumpDown)
             {
                 _jumpToConsume = true;
@@ -250,6 +257,7 @@ namespace TarodevController
         private const int RAY_SIDE_COUNT = 5;
         private RaycastHit2D _groundHit;
         private bool _grounded;
+        private bool _wallSliding;
         private float _currentStepDownLength;
         private float GrounderLength => _character.StepHeight + SKIN_WIDTH;
 
@@ -329,18 +337,22 @@ namespace TarodevController
         private void SetColliderMode(ColliderMode mode)
         {
             _airborneCollider.enabled = mode == ColliderMode.Airborne;
-
             switch (mode)
             {
                 case ColliderMode.Standard:
                     _collider.size = _character.StandingColliderSize;
-                    _collider.offset = _character.StandingColliderCenter;
+                    var standingColliderCenter =  _character.StandingColliderCenter;
+                    standingColliderCenter += StandingColliderOffset;
+                    _collider.offset = standingColliderCenter;
                     break;
                 case ColliderMode.Crouching:
                     _collider.size = _character.CrouchColliderSize;
                     _collider.offset = _character.CrouchingColliderCenter;
                     break;
                 case ColliderMode.Airborne:
+                    var standingColliderCenterAirborne =  _character.StandingColliderCenter;
+                    standingColliderCenterAirborne += AirborneColliderOffset;
+                    _collider.offset = standingColliderCenterAirborne;
                     break;
             }
         }
@@ -413,14 +425,19 @@ namespace TarodevController
                 if (_wallDirThisFrame == 0 || _grounded) return false;
 
                 if (HorizontalInputPressed && !IsPushingAgainstWall) return false; // If pushing away
-                return !Stats.RequireInputPush || (IsPushingAgainstWall);
+                return !Stats.RequireInputPush || IsPushingAgainstWall;
             }
         }
 
         private bool DetectWallCast(float dir)
         {
-            return Physics2D.BoxCast(_framePosition + (Vector2)_wallDetectionBounds.center, new Vector2(_character.StandingColliderSize.x - SKIN_WIDTH, _wallDetectionBounds.size.y), 0, new Vector2(dir, 0), Stats.WallDetectorRange,
-                Stats.ClimbableLayer);
+            return Physics2D.BoxCast(
+                _framePosition + (Vector2)_wallDetectionBounds.center, 
+                new Vector2(_character.StandingColliderSize.x - SKIN_WIDTH, _wallDetectionBounds.size.y), 
+                0, 
+                new Vector2(dir, 0), 
+                Stats.WallDetectorRange,
+                Stats.CollisionLayers);
         }
 
         private void ToggleOnWall(bool on)
@@ -512,7 +529,6 @@ namespace TarodevController
         private float _timeJumpWasPressed;
         private Vector2 _forceToApplyThisFrame;
         private bool _endedJumpEarly;
-        private float _endedJumpForce;
         private int _airJumpsRemaining;
         private bool _wallJumpCoyoteUsable;
         private bool _coyoteUsable;
@@ -751,20 +767,24 @@ namespace TarodevController
                 return;
             }
 
-            if (_isOnWall)
-            {
+            if (_isOnWall && !_grounded) {
                 _constantForce.force = Vector2.zero;
+                if (_frameInput.Move.y != 0) {
+                    SetVelocity(new Vector2(Velocity.x, _frameInput.Move.y * Stats.WallClimbSpeed));
+                }
+                else if (IsPushingAgainstWall){
+                    _wallSliding = true;
+                    SetVelocity(new Vector2(Velocity.x, -Stats.WallSlideSpeed));
+                }
 
-                float wallVelocity;
-                if (_frameInput.Move.y != 0) wallVelocity = _frameInput.Move.y * Stats.WallClimbSpeed;
-                else wallVelocity = Mathf.MoveTowards(Mathf.Min(Velocity.y, 0), -Stats.WallClimbSpeed, Stats.WallFallAcceleration * _delta);
-
-                SetVelocity(new Vector2(_rb.linearVelocity.x, wallVelocity));
                 return;
+            } else {
+                _wallSliding = false;
             }
 
             if (ClimbingLadder)
             {
+                Debug.Log("isClimbingLadder!");
                 _constantForce.force = Vector2.zero;
                 _rb.gravityScale = 0;
 
@@ -803,7 +823,7 @@ namespace TarodevController
 
             var step = _hasInputThisFrame ? Stats.Acceleration : Stats.Friction;
 
-            var xDir = (_hasInputThisFrame ? _frameDirection : Velocity.normalized);
+            var xDir = _hasInputThisFrame ? _frameDirection : Velocity.normalized;
 
             // Quicker direction change
             if (Vector3.Dot(_trimmedFrameVelocity, _frameDirection) < 0) step *= Stats.DirectionCorrectionMultiplier;
@@ -940,6 +960,7 @@ namespace TarodevController
 
         #endregion
     }
+    
 
     public enum JumpType
     {

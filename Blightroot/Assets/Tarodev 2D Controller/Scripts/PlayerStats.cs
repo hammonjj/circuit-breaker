@@ -59,6 +59,7 @@ namespace TarodevController
         public Vector2 WallPushPower = new(15, 10);
         public float WallClimbSpeed = 5;
         public float WallFallAcceleration = 20;
+        public float  WallSlideSpeed = 2;
         public float WallPopForce = 10;
         public float WallCoyoteTime = 0.3f;
         public float WallDetectorRange = 0.1f;
