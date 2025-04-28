@@ -1,6 +1,6 @@
 {
 "skeleton": {
-	"hash": "elt+ZrhPlko",
+	"hash": "hBGJI/onFQo",
 	"spine": "4.2.40",
 	"x": -467,
 	"y": -18.71,
@@ -195,6 +195,54 @@
 			]
 		}
 	},
+	"Falling": {
+		"bones": {
+			"Body2": {
+				"rotate": [
+					{ "value": -28.88 }
+				]
+			},
+			"Body": {
+				"rotate": [
+					{ "value": 15.8 }
+				]
+			},
+			"BackForeground_Reference": {
+				"translate": [
+					{ "x": -53.64, "y": -89.4 },
+					{ "time": 0.1, "x": -56.89, "y": -104.03 }
+				]
+			},
+			"BackBackground_Reference": {
+				"translate": [
+					{ "x": 14.63, "y": -74.77 },
+					{ "time": 0.1, "x": 13, "y": -118.66 }
+				]
+			},
+			"FrontForeground_Reference": {
+				"translate": [
+					{ "x": -89.4, "y": -112.15 },
+					{ "time": 0.1, "x": -121.91, "y": -121.91 }
+				]
+			},
+			"FrontBackground_Reference": {
+				"translate": [
+					{ "x": -29.26, "y": -99.15 },
+					{ "time": 0.1, "x": -113.78, "y": -167.42 }
+				]
+			},
+			"Tail": {
+				"rotate": [
+					{ "value": 62.92 }
+				]
+			},
+			"Head": {
+				"rotate": [
+					{ "value": 4.78 }
+				]
+			}
+		}
+	},
 	"Jump": {
 		"bones": {
 			"Body2": {
@@ -235,6 +283,32 @@
 					{ "time": 0.1667, "x": 23.08 }
 				]
 			}
+		}
+	},
+	"Landing": {
+		"bones": {
+			"Body": {
+				"translate": [
+					{ "x": -25.96, "y": -80.53 },
+					{ "time": 0.1667, "x": -35.2, "y": -109.18 }
+				]
+			},
+			"FrontBackground_Reference": {
+				"translate": [
+					{ "x": -23.15, "y": -6.09 }
+				]
+			},
+			"Tail": {
+				"rotate": [
+					{ "value": 34.59 },
+					{ "time": 0.1667, "value": 7.21 }
+				]
+			}
+		},
+		"ik": {
+			"FrontBackground_Reference2": [
+				{ "time": 0.0667, "mix": 0.5898 }
+			]
 		}
 	},
 	"Walk": {

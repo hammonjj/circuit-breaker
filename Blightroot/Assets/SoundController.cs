@@ -83,7 +83,6 @@ public class SoundController : MonoBehaviour
 
             // Spawn the pulse at this 2D position (z = 0)
             Vector3 spawn3D = new Vector3(spawn2D.x, spawn2D.y, 0f);
-            //Instantiate(soundPulsePrefab, spawn3D, Quaternion.identity);
             SpawnPulse(walkPulseRange, spawn3D);
         }
     }

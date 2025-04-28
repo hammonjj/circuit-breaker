@@ -123,8 +123,8 @@ public class PlayerAnim : MonoBehaviour {
     bool falling = !grounded && _controller.Velocity.y < 0;
     if (falling && !_wasFalling && _jumpEntry == null)
     {
-      //_fallEntry = skeletonAnimation.state.SetAnimation(3, "Falling", true);
-      //_fallEntry.TimeScale = 1f;
+      _fallEntry = skeletonAnimation.state.SetAnimation(3, "Falling", true);
+      _fallEntry.TimeScale = 1f;
     }
   }
 
@@ -141,14 +141,14 @@ public class PlayerAnim : MonoBehaviour {
 
       skeletonAnimation.state.SetEmptyAnimation(4, 0.1f);
 
-      //_landEntry = skeletonAnimation.state.SetAnimation(4, "Landing", false);
-      //_landEntry.TimeScale = 1f;
-      // when Land completes, clear it so Walk/Crouch can resume
-      //_landEntry.Complete += entry =>
-      //{
-      //  skeletonAnimation.state.SetEmptyAnimation(4, 0.1f);
-      //  _landEntry = null;
-      //};
+      _landEntry = skeletonAnimation.state.SetAnimation(4, "Landing", false);
+      _landEntry.TimeScale = 1f;
+      //when Land completes, clear it so Walk/Crouch can resume
+      _landEntry.Complete += entry =>
+      {
+       skeletonAnimation.state.SetEmptyAnimation(4, 0.1f);
+       _landEntry = null;
+      };
     }
   }
 
