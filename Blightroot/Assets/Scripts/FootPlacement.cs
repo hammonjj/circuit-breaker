@@ -4,8 +4,8 @@ using UnityEngine;
 public class FootPlacement : MonoBehaviour
 {
     [Header("Setup")]
-    public Transform rootTransform;            // your SkeletonUtility-SkeletonRoot
-    public PlayerController playerController;  // drag your PlayerController here
+    public Transform rootTransform;
+    public PlayerController playerController;
 
     [Header("Offsets")]
     public Vector2 footOffset = new Vector2(0f, 0.1f);
@@ -22,14 +22,21 @@ public class FootPlacement : MonoBehaviour
 
     void Start()
     {
-        if (rootTransform    == null) rootTransform    = transform.parent;
-        if (playerController == null) playerController = GetComponentInParent<PlayerController>();
+        if (rootTransform    == null) 
+        {
+            rootTransform = transform.parent;
+        }
+        
+        if (playerController == null) 
+        {
+            playerController = GetComponentInParent<PlayerController>();
+        }
 
         // record the “idle” local-space foot position
         Vector3 worldPos = transform.position;
-        _originalLocal   = rootTransform.InverseTransformPoint(worldPos);
-        _targetWorld     = worldPos;
-        _initted         = true;
+        _originalLocal = rootTransform.InverseTransformPoint(worldPos);
+        _targetWorld = worldPos;
+        _initted = true;
     }
 
     void LateUpdate()

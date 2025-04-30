@@ -13,8 +13,9 @@ public class PlayerAnim : MonoBehaviour {
     public SkeletonAnimation skeletonAnimation;
     public GameObject soundPulsePrefab;
     public Vector2 pulseOffset2D = Vector2.zero;
-    int _dirSign = 1;
-
+    public TarodevController.PlayerController _controller;
+    
+    private int _dirSign = 1;
     private TrackEntry _walkEntry;
     private TrackEntry _crouchEntry;
     private TrackEntry _jumpEntry;
@@ -23,13 +24,13 @@ public class PlayerAnim : MonoBehaviour {
     private TrackEntry _slideEntry;
 
 
-    private TarodevController.PlayerController _controller;
+    
 
     private bool _wasGrounded;
     private bool _wasFalling;
 
     void Awake() {
-        skeletonAnimation ??= GetComponent<SkeletonAnimation>();
+        //skeletonAnimation ??= GetComponent<SkeletonAnimation>();
 
         // Start in neutral pose
         skeletonAnimation.state.ClearTracks();

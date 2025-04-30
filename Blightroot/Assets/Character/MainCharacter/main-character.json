@@ -1,6 +1,6 @@
 {
 "skeleton": {
-	"hash": "hBGJI/onFQo",
+	"hash": "M24TYO4H/3w",
 	"spine": "4.2.40",
 	"x": -467,
 	"y": -18.71,
@@ -29,14 +29,14 @@
 	{ "name": "BackForegroundLeg-Lower", "parent": "BackForegroundLeg-Upper", "length": 144.11, "rotation": -42.22, "x": 126.76, "y": 0.67 },
 	{ "name": "BackForegroundLeg-Foot", "parent": "BackForegroundLeg-Lower", "length": 61.49, "rotation": -68.8, "x": 148.33, "y": -4.31 },
 	{ "name": "Tail", "parent": "Body", "length": 339.41, "rotation": 158.99, "x": 63.37, "y": -16.4 },
-	{ "name": "FrontBackground_Reference", "parent": "root", "x": -369.02, "y": 1.18, "color": "ff4000ff", "icon": "ik" },
-	{ "name": "FrontForeground_Reference", "parent": "root", "x": -120.62, "y": -0.17, "color": "ff4000ff", "icon": "ik" },
-	{ "name": "BackBackground_Reference", "parent": "root", "x": 11.5, "y": 1.18, "color": "ff4000ff", "icon": "ik" },
-	{ "name": "BackForeground_Reference", "parent": "root", "x": 329.4, "y": 6.62, "color": "ff4000ff", "icon": "ik" },
-	{ "name": "BackBackground_Reference2", "parent": "BackBackground_Reference", "x": 117.71, "y": 155.84, "color": "ff4000ff", "icon": "ik" },
-	{ "name": "FrontForeground_Reference2", "parent": "FrontForeground_Reference", "x": 111.52, "y": 217.45, "color": "ff4000ff", "icon": "ik" },
-	{ "name": "FrontBackground_Reference2", "parent": "FrontBackground_Reference", "x": 196.88, "y": 206.15, "color": "ff4000ff", "icon": "ik" },
-	{ "name": "BackForeground_Reference2", "parent": "BackForeground_Reference", "x": 2.59, "y": 189.72, "color": "ff4000ff", "icon": "ik" }
+	{ "name": "FrontBackground_Reference", "parent": "root", "x": -369.02, "y": 1.18, "color": "ff3f00ff", "icon": "ik" },
+	{ "name": "FrontForeground_Reference", "parent": "root", "x": -120.62, "y": -0.17, "color": "ff3f00ff", "icon": "ik" },
+	{ "name": "BackBackground_Reference", "parent": "root", "x": 11.5, "y": 1.18, "color": "ff3f00ff", "icon": "ik" },
+	{ "name": "BackForeground_Reference", "parent": "root", "x": 329.4, "y": 6.62, "color": "ff3f00ff", "icon": "ik" },
+	{ "name": "BackBackground_Reference2", "parent": "BackBackground_Reference", "x": 117.71, "y": 155.84, "color": "ff3f00ff", "icon": "ik" },
+	{ "name": "FrontForeground_Reference2", "parent": "FrontForeground_Reference", "x": 111.52, "y": 217.45, "color": "ff3f00ff", "icon": "ik" },
+	{ "name": "FrontBackground_Reference2", "parent": "FrontBackground_Reference", "x": 196.88, "y": 206.15, "color": "ff3f00ff", "icon": "ik" },
+	{ "name": "BackForeground_Reference2", "parent": "BackForeground_Reference", "x": 2.59, "y": 189.72, "color": "ff3f00ff", "icon": "ik" }
 ],
 "slots": [
 	{ "name": "BackBackgroundLeg-Foot", "bone": "BackBackgroundLeg-Foot", "attachment": "BackBackgroundLeg-Foot" },
@@ -396,6 +396,80 @@
 		"events": [
 			{ "time": 0.1, "name": "WalkLanding" }
 		]
+	},
+	"WallSlide": {
+		"bones": {
+			"root": {
+				"rotate": [
+					{ "value": 270 }
+				],
+				"translate": [
+					{ "x": 438.75, "y": 397.37 }
+				],
+				"scale": [
+					{ "y": -1 }
+				]
+			},
+			"Body": {
+				"translate": [
+					{ "x": -39.33, "y": -122 }
+				]
+			},
+			"FrontBackground_Reference": {
+				"translate": [
+					{ "x": -190.37 },
+					{ "time": 0.1333, "x": -179.29, "y": -0.01 },
+					{ "time": 0.2667, "x": -168.32, "y": -0.01 }
+				]
+			},
+			"FrontBackground_Reference2": {
+				"translate": [
+					{ "y": -171.88 },
+					{ "time": 0.2667, "y": -250.86 }
+				]
+			},
+			"FrontForeground_Reference": {
+				"translate": [
+					{ "x": -275.38, "y": -7.39 },
+					{ "time": 0.1333, "x": -284.16, "y": -9.59 },
+					{ "time": 0.2667, "x": -277.58, "y": -9.59 }
+				]
+			},
+			"FrontForeground_Reference2": {
+				"translate": [
+					{ "x": -44.54, "y": -53.74 }
+				]
+			},
+			"BackBackground_Reference": {
+				"translate": [
+					{ "x": 75.78 },
+					{ "time": 0.1333, "x": 91.13 },
+					{ "time": 0.2667, "x": 80.16 }
+				]
+			},
+			"Head": {
+				"rotate": [
+					{ "value": -92.35 }
+				],
+				"translate": [
+					{ "x": -19.33, "y": 51.94 }
+				],
+				"shear": [
+					{ "y": 160 }
+				]
+			},
+			"BackForeground_Reference": {
+				"translate": [
+					{ "time": 0.1333, "x": 4.39 },
+					{ "time": 0.2667, "x": -4.39 }
+				]
+			},
+			"Tail": {
+				"rotate": [
+					{ "value": 59.22 }
+				]
+			}
+		}
 	}
 }
 }
