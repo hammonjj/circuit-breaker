@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: VisionFogFeature
   m_EditorClassIdentifier: 
   m_Active: 1
-  settings: {blurMat: {fileID: 2100000, guid: 9699aafb11d5b4c5fb129da8296bb44b, type: 2},
-    compositeMat: {fileID: 2100000, guid: 1f423f79e4cd54c80a7fe4e8f9083f0a, type: 2}}
+  settings: 
+    blurMat: {fileID: 2100000, guid: 9699aafb11d5b4c5fb129da8296bb44b, type: 2}
+    compositeMat: {fileID: 2100000, guid: 1f423f79e4cd54c80a7fe4e8f9083f0a, type: 2}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
