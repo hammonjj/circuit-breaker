@@ -154,10 +154,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -667.0,
-            "y": -163.0,
-            "width": 208.00006103515626,
-            "height": 311.9999694824219
+            "x": -464.5,
+            "y": -189.0,
+            "width": 145.0,
+            "height": 127.5
         }
     },
     "m_Slots": [
@@ -167,7 +167,7 @@
     ],
     "synonyms": [],
     "m_Precision": 0,
-    "m_PreviewExpanded": true,
+    "m_PreviewExpanded": false,
     "m_DismissedVersion": 0,
     "m_PreviewMode": 0,
     "m_CustomColors": {
@@ -188,9 +188,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -279.0,
-            "y": -307.9999694824219,
-            "width": 228.99996948242188,
+            "x": -238.0,
+            "y": -236.50001525878907,
+            "width": 230.0,
             "height": 34.0
         }
     },
@@ -264,10 +264,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -258.05560302734377,
-            "y": -176.80557250976563,
-            "width": 208.00006103515626,
-            "height": 326.0
+            "x": -182.5,
+            "y": -178.5,
+            "width": 153.5,
+            "height": 142.00001525878907
         }
     },
     "m_Slots": [
@@ -289,7 +289,7 @@
         "scale"
     ],
     "m_Precision": 0,
-    "m_PreviewExpanded": true,
+    "m_PreviewExpanded": false,
     "m_DismissedVersion": 0,
     "m_PreviewMode": 0,
     "m_CustomColors": {
@@ -346,10 +346,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -408.05560302734377,
-            "y": 46.194427490234378,
-            "width": 0.0,
-            "height": 0.0
+            "x": -331.0,
+            "y": 1.0,
+            "width": 117.5,
+            "height": 34.000030517578128
         }
     },
     "m_Slots": [
@@ -412,10 +412,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 50.05548095703125,
-            "y": -202.69442749023438,
-            "width": 208.0,
-            "height": 433.0
+            "x": 51.5,
+            "y": -202.5,
+            "width": 183.0,
+            "height": 248.00001525878907
         }
     },
     "m_Slots": [
@@ -448,7 +448,7 @@
         "tex2d"
     ],
     "m_Precision": 0,
-    "m_PreviewExpanded": true,
+    "m_PreviewExpanded": false,
     "m_DismissedVersion": 0,
     "m_PreviewMode": 0,
     "m_CustomColors": {
@@ -465,7 +465,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector2MaterialSlot",
     "m_ObjectId": "9e17d2fc5f2a4558839d31853356f5cb",
     "m_Id": 0,
-    "m_DisplayName": "Vector2",
+    "m_DisplayName": "Offset",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
@@ -493,10 +493,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 356.9999084472656,
-            "y": -176.99998474121095,
-            "width": 119.00009155273438,
-            "height": 101.0
+            "x": 271.5,
+            "y": -202.50001525878907,
+            "width": 120.00006103515625,
+            "height": 76.99998474121094
         }
     },
     "m_Slots": [
@@ -634,7 +634,7 @@
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
     "m_UseCustomSlotLabel": false,
-    "m_CustomSlotLabel": "",
+    "m_CustomSlotLabel": "_CameraSortingLayerTexture",
     "m_DismissedVersion": 0,
     "m_Precision": 0,
     "overrideHLSLDeclaration": false,
@@ -657,10 +657,10 @@
     "m_Guid": {
         "m_GuidSerialized": "123b1e42-1838-4d3c-988e-dd7308804326"
     },
-    "m_Name": "Vector2",
+    "m_Name": "Offset",
     "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "Vector2",
-    "m_DefaultReferenceName": "_Vector2",
+    "m_RefNameGeneratedByDisplayName": "Offset",
+    "m_DefaultReferenceName": "_Offset",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
     "m_UseCustomSlotLabel": false,
