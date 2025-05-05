@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 0
   CollisionLayers:
     serializedVersion: 2
-    m_Bits: 769
+    m_Bits: 777
   CharacterSize:
     Height: 1.98
     Width: 2.31

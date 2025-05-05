@@ -13,4 +13,10 @@ public static class Utils {
         if (angle < 0) angle += 360;
         return angle;
     }
+
+    public static float GetAngleFromVector(Vector3 dir){
+        dir.Normalize();
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        return angle < 0 ? angle + 360 : angle;
+    }
 }
