@@ -5,7 +5,7 @@ using UnityEngine;
 namespace TarodevController
 {
     [RequireComponent(typeof(Rigidbody2D), typeof(BoxCollider2D), typeof(CapsuleCollider2D))]
-    public class PlayerController : MonoBehaviour, IPlayerController, IPhysicsObject
+    public partial class PlayerController : MonoBehaviour, IPlayerController, IPhysicsObject
     {
         public Vector2 AirborneColliderOffset;
         public Vector2 StandingColliderOffset;
@@ -394,7 +394,6 @@ namespace TarodevController
         private int _wallDirectionForJump;
         private bool _isOnWall;
         private float _timeLeftWall;
-        private float _currentWallSpeedVel;
         private float _canGrabWallAfter;
         private int _wallDirThisFrame;
 
@@ -925,37 +924,6 @@ namespace TarodevController
             }
 
             _currentFrameSpeedModifier = Vector2.SmoothDamp(_currentFrameSpeedModifier, _frameSpeedModifier, ref _frameSpeedModifierVelocity, 0.1f);
-        }
-
-        #endregion
-
-        #region Gizmos
-
-        private void OnDrawGizmos()
-        {
-            if (!_drawGizmos) return;
-
-            var pos = (Vector2)transform.position;
-
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireCube(pos + Vector2.up * _character.Height / 2, new Vector3(_character.Width, _character.Height));
-            Gizmos.color = Color.magenta;
-
-            var rayStart = pos + Vector2.up * _character.StepHeight;
-            var rayDir = Vector3.down * _character.StepHeight;
-            Gizmos.DrawRay(rayStart, rayDir);
-            foreach (var offset in GenerateRayOffsets())
-            {
-                Gizmos.DrawRay(rayStart + Vector2.right * offset, rayDir);
-                Gizmos.DrawRay(rayStart + Vector2.left * offset, rayDir);
-            }
-
-            Gizmos.color = Color.yellow;
-            Gizmos.DrawWireCube(pos + (Vector2)_wallDetectionBounds.center, _wallDetectionBounds.size);
-
-
-            Gizmos.color = Color.black;
-            Gizmos.DrawRay(RayPoint, Vector3.right);
         }
 
         #endregion
