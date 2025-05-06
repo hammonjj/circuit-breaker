@@ -130,10 +130,10 @@ namespace TarodevController
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""ExampleAction"",
+                    ""name"": ""Action"",
                     ""type"": ""Button"",
                     ""id"": ""fac85392-9cd4-4c47-a8da-8911e5b74689"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -378,7 +378,7 @@ namespace TarodevController
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""ExampleAction"",
+                    ""action"": ""Action"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -454,7 +454,7 @@ namespace TarodevController
             m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
             m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
             m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
-            m_Player_ExampleAction = m_Player.FindAction("ExampleAction", throwIfNotFound: true);
+            m_Player_Action = m_Player.FindAction("Action", throwIfNotFound: true);
         }
 
         ~@PlayerInputActions()
@@ -539,7 +539,7 @@ namespace TarodevController
         private readonly InputAction m_Player_Jump;
         private readonly InputAction m_Player_Dash;
         private readonly InputAction m_Player_Attack;
-        private readonly InputAction m_Player_ExampleAction;
+        private readonly InputAction m_Player_Action;
         /// <summary>
         /// Provides access to input actions defined in input action map "Player".
         /// </summary>
@@ -568,9 +568,9 @@ namespace TarodevController
             /// </summary>
             public InputAction @Attack => m_Wrapper.m_Player_Attack;
             /// <summary>
-            /// Provides access to the underlying input action "Player/ExampleAction".
+            /// Provides access to the underlying input action "Player/Action".
             /// </summary>
-            public InputAction @ExampleAction => m_Wrapper.m_Player_ExampleAction;
+            public InputAction @Action => m_Wrapper.m_Player_Action;
             /// <summary>
             /// Provides access to the underlying input action map instance.
             /// </summary>
@@ -609,9 +609,9 @@ namespace TarodevController
                 @Attack.started += instance.OnAttack;
                 @Attack.performed += instance.OnAttack;
                 @Attack.canceled += instance.OnAttack;
-                @ExampleAction.started += instance.OnExampleAction;
-                @ExampleAction.performed += instance.OnExampleAction;
-                @ExampleAction.canceled += instance.OnExampleAction;
+                @Action.started += instance.OnAction;
+                @Action.performed += instance.OnAction;
+                @Action.canceled += instance.OnAction;
             }
 
             /// <summary>
@@ -635,9 +635,9 @@ namespace TarodevController
                 @Attack.started -= instance.OnAttack;
                 @Attack.performed -= instance.OnAttack;
                 @Attack.canceled -= instance.OnAttack;
-                @ExampleAction.started -= instance.OnExampleAction;
-                @ExampleAction.performed -= instance.OnExampleAction;
-                @ExampleAction.canceled -= instance.OnExampleAction;
+                @Action.started -= instance.OnAction;
+                @Action.performed -= instance.OnAction;
+                @Action.canceled -= instance.OnAction;
             }
 
             /// <summary>
@@ -772,12 +772,12 @@ namespace TarodevController
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
             void OnAttack(InputAction.CallbackContext context);
             /// <summary>
-            /// Method invoked when associated input action "ExampleAction" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// Method invoked when associated input action "Action" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
             /// </summary>
             /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-            void OnExampleAction(InputAction.CallbackContext context);
+            void OnAction(InputAction.CallbackContext context);
         }
     }
 }

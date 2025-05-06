@@ -42,10 +42,10 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "ExampleAction",
+                    "name": "Action",
                     "type": "Button",
                     "id": "fac85392-9cd4-4c47-a8da-8911e5b74689",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -290,7 +290,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "ExampleAction",
+                    "action": "Action",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
