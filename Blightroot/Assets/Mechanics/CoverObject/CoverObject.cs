@@ -155,6 +155,12 @@ public class CoverObject : MonoBehaviourBase {
         }
 
         player.transform.position = end;
+
+        if (player.TryGetComponent(out Rigidbody2D rb)) {
+            rb.linearVelocity = Vector2.zero;
+            rb.angularVelocity = 0f;
+        }
+
         isInCover = true;
         isMoving = false;
         LogDebug("LerpToCover() complete");
