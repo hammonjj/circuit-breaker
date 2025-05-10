@@ -30,16 +30,38 @@ public class CoverObject : MonoBehaviourBase {
         input = new PlayerInputActions();
     }
 
-    private void OnEnable() {
+    protected override void OnEnable() {
+        base.OnEnable();
         input.Player.Enable();
         input.Player.Action.performed += OnAction;
+
+        MessageBus.Subscribe<DisableInputExceptActionEvent>(OnRestrictInput);
+        MessageBus.Subscribe<EnableInputExceptActionEvent>(OnRestoreInput);
+
         LogDebug("CoverObject input enabled");
     }
 
     private void OnDisable() {
         input.Player.Action.performed -= OnAction;
         input.Player.Disable();
+
+        MessageBus.Subscribe<DisableInputExceptActionEvent>(OnRestrictInput);
+        MessageBus.Subscribe<EnableInputExceptActionEvent>(OnRestoreInput);
+
         LogDebug("CoverObject input disabled");
+    }
+
+    private void OnRestrictInput(DisableInputExceptActionEvent _)
+    {
+        input.Player.Disable();
+        input.Player.Action.Enable();
+        LogDebug("Restricted full input map");
+    }
+
+    private void OnRestoreInput(EnableInputExceptActionEvent _)
+    {
+        input.Player.Enable();
+        LogDebug("Restored full input map");
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
@@ -109,9 +131,10 @@ public class CoverObject : MonoBehaviourBase {
 
         // Restrict controls to Move & Action only
         input.Player.Disable();
-        input.Player.Move.Enable();
         input.Player.Action.Enable();
         LogDebug("Restricted input to Move & Action");
+        
+        MessageBus.Publish(new DisableInputExceptActionEvent());
 
         // Smoothly move into cover
         isMoving = true;
@@ -149,12 +172,8 @@ public class CoverObject : MonoBehaviourBase {
         playerRenderer.sortingOrder = originalSortingOrder;
         LogDebug($"Restored sorting: layer={originalSortingLayer}, order={originalSortingOrder}");
 
-        // Restore full control map
-        input.Player.Disable();
-        input.Player.Enable();
-        LogDebug("Restored full input map");
-
         isInCover = false;
+        MessageBus.Publish(new EnableInputExceptActionEvent());
     }
 
     protected override void DrawGizmosSafe() {

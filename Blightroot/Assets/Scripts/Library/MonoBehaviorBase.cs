@@ -17,8 +17,14 @@ public abstract class MonoBehaviourBase : MonoBehaviour {
     [Tooltip("Minimum log level to output to the console.")]
     public LogLevel logLevel = LogLevel.Info;
 
+    protected IMessageBus MessageBus;
+
     private string _cachedObjectName;
     private int _debugId;
+
+    protected virtual void OnEnable() {
+        MessageBus = GameObject.FindWithTag("MessageBus")?.GetComponent<MessageBus>();
+    }
 
     protected virtual void Awake() {
         _cachedObjectName = gameObject.name;

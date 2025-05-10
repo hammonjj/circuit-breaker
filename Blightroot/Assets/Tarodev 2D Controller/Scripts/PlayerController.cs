@@ -5,7 +5,7 @@ using UnityEngine;
 namespace TarodevController
 {
     [RequireComponent(typeof(Rigidbody2D), typeof(BoxCollider2D), typeof(CapsuleCollider2D))]
-    public partial class PlayerController : MonoBehaviour, IPlayerController, IPhysicsObject
+    public partial class PlayerController : MonoBehaviourBase, IPlayerController, IPhysicsObject
     {
         public Vector2 AirborneColliderOffset;
         public Vector2 StandingColliderOffset;
@@ -35,12 +35,45 @@ namespace TarodevController
         public Vector2 Up { get; private set; }
         public Vector2 Right { get; private set; }
         public bool Crouching { get; private set; }
-        public Vector2 Input => _frameInput.Move;
+        public Vector2 Input {
+            get {
+                 if (_inputExceptActionOnly) {return Vector2.zero;} 
+                return _frameInput.Move;}
+        }
         public Vector2 GroundNormal { get; private set; }
         public Vector2 Velocity { get; private set; }
         public int WallDirection { get; private set; }
         public bool ClimbingLadder { get; private set; }
 
+        // 1) A flag to track the restriction state:
+        private bool _inputExceptActionOnly = false;
+
+        // 2) Subscribe / unsubscribe in OnEnable/OnDisable:
+        protected override void OnEnable()
+        {
+            base.OnEnable();
+            MessageBus.Subscribe<DisableInputExceptActionEvent>(OnDisableInputExceptAction);
+            MessageBus.Subscribe<EnableInputExceptActionEvent>(OnEnableInputExceptAction);
+        }
+
+        private void OnDisable()
+        {
+            MessageBus.Unsubscribe<DisableInputExceptActionEvent>(OnDisableInputExceptAction);
+            MessageBus.Unsubscribe<EnableInputExceptActionEvent>(OnEnableInputExceptAction);
+        }
+
+        // 3) Handlers:
+        private void OnDisableInputExceptAction(DisableInputExceptActionEvent _)
+        {
+            LogDebug("Input except action only enabled");
+            _inputExceptActionOnly = true;
+        }
+
+        private void OnEnableInputExceptAction(EnableInputExceptActionEvent _)
+        {
+            LogDebug("Input except action only disabled");
+            _inputExceptActionOnly = false;
+        }
         public void AddFrameForce(Vector2 force, bool resetVelocity = false)
         {
             if (resetVelocity) SetVelocity(Vector2.zero);
@@ -79,8 +112,9 @@ namespace TarodevController
 
         private float _delta, _time;
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             if (!TryGetComponent(out _playerInput)) _playerInput = gameObject.AddComponent<PlayerInput>();
             if (!TryGetComponent(out _constantForce)) _constantForce = gameObject.AddComponent<ConstantForce2D>();
 
@@ -181,19 +215,31 @@ namespace TarodevController
         private FrameInput _frameInput;
 
         private void GatherInput()
+    {
+        if (_inputExceptActionOnly)
         {
-            _frameInput = _playerInput.Gather();
-            if (_frameInput.JumpDown)
-            {
-                _jumpToConsume = true;
-                _timeJumpWasPressed = _time;
-            }
-
-            if (_frameInput.DashDown)
-            {
-                _dashToConsume = true;
-            }
+            _frameInput = new FrameInput {
+                Move     = Vector2.zero,
+                JumpDown = false,
+                DashDown = false,
+                // if you had ActionDown/Held flags, copy them here:
+                // ActionDown = raw.ActionDown,
+                // ActionHeld = raw.ActionHeld
+            };
+            return;
         }
+
+        var raw = _playerInput.Gather();
+
+        _frameInput = raw;
+        if (_frameInput.JumpDown)
+        {
+            _jumpToConsume = true;
+            _timeJumpWasPressed = _time;
+        }
+        if (_frameInput.DashDown)
+            _dashToConsume = true;
+    }
 
         #endregion
 
@@ -371,18 +417,28 @@ namespace TarodevController
         private Vector2 _frameDirection;
 
         private void CalculateDirection()
+    {
+        if (_inputExceptActionOnly)
         {
-            _frameDirection = new Vector2(_frameInput.Move.x, 0);
-
-            if (_grounded)
-            {
-                GroundNormal = _groundHit.normal;
-                var angle = Vector2.Angle(GroundNormal, Up);
-                if (angle < Stats.MaxWalkableSlope) _frameDirection.y = _frameDirection.x * -GroundNormal.x / GroundNormal.y;
-            }
-
-            _frameDirection = _frameDirection.normalized;
+            _frameDirection = Vector2.zero;
+            return;
         }
+
+        _frameDirection = new Vector2(_frameInput.Move.x, 0);
+
+        if (_grounded)
+        {
+            GroundNormal = _groundHit.normal;
+            var angle = Vector2.Angle(GroundNormal, Up);
+            if (angle < Stats.MaxWalkableSlope)
+            {
+                _frameDirection.y = _frameDirection.x * -GroundNormal.x / GroundNormal.y;
+            }
+        }
+
+        _frameDirection = _frameDirection.normalized;
+    }
+
 
         #endregion
 
@@ -541,6 +597,7 @@ namespace TarodevController
 
         private void CalculateJump()
         {
+            if (_inputExceptActionOnly) {return;}
             if ((_jumpToConsume || HasBufferedJump) && CanStand)
             {
                 if (CanWallJump) ExecuteJump(JumpType.WallJump);
@@ -610,6 +667,7 @@ namespace TarodevController
 
         private void CalculateDash()
         {
+            if (_inputExceptActionOnly) {return;}
             if (!Stats.AllowDash) return;
 
             if (_dashToConsume && _canDash && !Crouching && _time > _nextDashTime)
@@ -750,6 +808,9 @@ namespace TarodevController
 
         private void Move()
         {
+            if (_inputExceptActionOnly) {
+                LogDebug("PlayerController: Move() - Input is disabled, skipping movement calculations.");
+                return;}
             if (_forceToApplyThisFrame != Vector2.zero)
             {
                 _rb.linearVelocity += AdditionalFrameVelocities();
