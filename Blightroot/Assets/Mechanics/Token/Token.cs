@@ -140,6 +140,9 @@ public class Token : MonoBehaviourBase
     private void OnAction(InputAction.CallbackContext ctx) {
         LogDebug("Action performed");
 
+        if (gem == null || !gem.activeInHierarchy)
+            return;
+
         if (!_isPlayerNear)
         {
             if (_isCollecting) EndCollect();
