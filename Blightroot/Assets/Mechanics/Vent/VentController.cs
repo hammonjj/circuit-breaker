@@ -21,10 +21,18 @@ public class VentController : MonoBehaviourBase {
   private bool isLeaning;
   private bool isOpen;
 
+  private LayerMask leanMask;
+  private LayerMask ventMask;
+
+  private Animator animator;
   private CinemachinePositionComposer _composer;
 
   protected override void Awake() {
     base.Awake();
+    ventMask = gameObject.layer;
+    leanMask = LayerMask.NameToLayer("Mask");
+    animator = GetComponent<Animator>();
+
     input = new PlayerInputActions();
 
     if (vCam != null) {
@@ -55,14 +63,16 @@ public class VentController : MonoBehaviourBase {
   private void Update() {
     if (!isPlayerNear || isOpen || _composer == null) {return;}
 
-    HandleLean();
+    MoveCamera();
+    
   }
 
-  private void HandleLean() {
+  private void MoveCamera() {
     float x = moveInput.x;
     bool shouldLean = Mathf.Abs(x) > peekThreshold;
     if (shouldLean != isLeaning) {
       isLeaning = shouldLean;
+      updateLayerMask(isLeaning);
     }
 
     // pick target: ±leanDistance or 0
@@ -74,12 +84,21 @@ public class VentController : MonoBehaviourBase {
     _composer.TargetOffset = off;
   }
 
+  private void updateLayerMask(bool isLeaning) {
+    if (isLeaning) {
+      gameObject.layer = leanMask;
+    } else {
+      gameObject.layer = ventMask;
+    }
+  }
+
   private void OnMove(InputAction.CallbackContext ctx) {
     moveInput = ctx.ReadValue<Vector2>();
   }
 
   private void OnAction(InputAction.CallbackContext ctx) {
     if (isPlayerNear && !isOpen) {
+      animator.SetTrigger("Open");
       isOpen = true;
       isLeaning = false;
     }
@@ -95,6 +114,8 @@ public class VentController : MonoBehaviourBase {
     if (col.gameObject.CompareTag("Player")) {
       isPlayerNear = false;
       isLeaning = false;
+
+      updateLayerMask(false);
     }
   }
 
